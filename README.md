@@ -1,19 +1,31 @@
-MSCCU Website
-A full-stack web platform for the Medical School Christian Union (MSCU), designed to foster fellowship, spiritual growth, and information sharing among medical students.
+🕊️ MSCU Website
 
-Overview
-The MSCU Website is a modern web application built using the MERN stack (MongoDB, Express.js, React + Vite, Node.js). It provides a trusted space for members to connect, access updates, share testimonies, study Bible materials, and stay informed about upcoming events and service opportunities.
+A full-stack web platform for the Medical School Christian Union (MSCU) — designed to foster fellowship, spiritual growth, and information sharing among medical students.
 
-Technology Stack
+🌍 Overview
+
+The MSCU Website is a modern web application built using the MERN stack (MongoDB, Express.js, React + Vite, Node.js).
+It provides a trusted digital space for members to:
+
+Connect and grow spiritually
+
+Access ministry updates and announcements
+
+Share testimonies and devotionals
+
+Engage in Bible study resources
+
+Stay informed about upcoming events and service opportunities
+
+⚙️ Technology Stack
 Layer	Technology
 Frontend	React.js, Vite, Tailwind CSS
 Backend	Node.js, Express.js
 Database	MongoDB (via Mongoose)
-Hosting	Frontend on Netlify, Backend on Render
-Version Control	Git, GitHub
-Project Structure
-text
-MSCCU/
+Hosting	Netlify (Frontend), Render (Backend)
+Version Control	Git & GitHub
+🧩 Project Structure
+MSCU-Website/
 ├── Frontend/          # React + Vite application (UI)
 │   ├── src/
 │   ├── public/
@@ -27,91 +39,95 @@ MSCCU/
 │
 ├── .gitignore
 └── README.md
-Getting Started
-1. Clone the repository
-bash
-git clone https://github.com/Kids741/MSCU.git
-cd MSCCU-Website
-2. Set up the frontend
-bash
+
+🚀 Getting Started
+1️⃣ Clone the repository
+git clone https://github.com/Kids741/MSCU-Website.git
+cd MSCU-Website
+
+2️⃣ Set up the Frontend
 cd Frontend
 pnpm install
 pnpm run dev
-The frontend will be accessible at http://localhost:3000.
 
-3. Set up the backend
-bash
+
+➡️ App runs on: http://localhost:3000
+
+3️⃣ Set up the Backend
 cd ../Backend
 pnpm install
 pnpm run dev
-The backend API will run on http://localhost:5000.
 
-Environment Variables
-Create a .env file in the Backend/ directory with the following content:
 
-text
+➡️ API runs on: http://localhost:5000
+
+🔐 Environment Variables
+
+Create a .env file inside Backend/:
+
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
-If the frontend requires environment variables, create a .env file in the Frontend/ directory with:
 
-text
+
+For Frontend/ (if needed):
+
 VITE_API_URL=http://localhost:5000
-Features (Current & Planned)
-📰 News and announcements
+
+✨ Features (Current & Planned)
+
+📰 News & announcements
 
 📅 Events calendar
 
 📖 Bible study materials
 
-💬 Member testimonials and devotionals
+💬 Member testimonials & devotionals
 
 🙏 Prayer requests submission
 
-👥 Leadership and ministry team information
+👥 Leadership & ministry team info
 
 🔐 Admin dashboard for content management
 
-Contributing
-We welcome contributions from MSCCU members.
+🤝 Contributing
 
-To contribute:
+We welcome contributions from MSCU members!
 
-Create a new feature branch:
+Create a feature branch
 
-bash
 git checkout -b feature/<your-feature-name>
-Commit your changes:
 
-bash
+
+Commit changes
+
 git commit -m "Add <your-feature-name>"
-Push your branch and open a Pull Request.
 
-Development Workflow
+
+Push and open a Pull Request
+
+🔄 Branch Workflow
 Branch	Purpose
 main	Production-ready code
 dev	Active development
 feature/*	Individual feature or fix
-Team & Contributors
-Medical School Christian Union (MSCCU)
-“Transforming lives through Christ within the medical fraternity.”
-
+👩‍💻 Team & Contributors
 Frontend Developers
 Name	GitHub
 Add Your Name	@username
-
 Backend Developers
 Name	GitHub
-Dennis Kidake	https://github.com/Kids741
-Joshua Wambisi	@username
+Dennis Kidake	@Kids741
 
-Deployment Links
+Joshua Wambisi	@username
+🌐 Deployment Links
 Service	URL
 Frontend (Netlify)	Coming soon
 Backend (Render)	Coming soon
 Database (MongoDB Atlas)	Configured privately
+📜 License
 
-
-License
-This project is created and maintained by MSCU ICT docket for ministry and educational purposes.
+This project is created and maintained by the MSCU ICT docket for ministry and educational purposes.
 © 2025 Medical School Christian Union (MSCU) – All rights reserved.
+
+“Transforming lives through Christ within the medical fraternity.”
