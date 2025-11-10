@@ -13,7 +13,7 @@ Hosting	Frontend on Netlify, Backend on Render
 Version Control	Git, GitHub
 Project Structure
 text
-MSCCU-Website/
+MSCCU/
 ├── Frontend/          # React + Vite application (UI)
 │   ├── src/
 │   ├── public/
@@ -99,15 +99,19 @@ Medical School Christian Union (MSCCU)
 Frontend Developers
 Name	GitHub
 Add Your Name	@username
+
 Backend Developers
 Name	GitHub
-Dennis Kidake	@Kids741
+Dennis Kidake	https://github.com/Kids741
 Joshua Wambisi	@username
+
 Deployment Links
 Service	URL
 Frontend (Netlify)	Coming soon
 Backend (Render)	Coming soon
 Database (MongoDB Atlas)	Configured privately
+
+
 License
-This project is created and maintained by MSCCU ICT docket for ministry and educational purposes.
-© 2025 Medical School Christian Union (MSCCU) – All rights reserved.
+This project is created and maintained by MSCU ICT docket for ministry and educational purposes.
+© 2025 Medical School Christian Union (MSCU) – All rights reserved.
