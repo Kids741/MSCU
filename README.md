@@ -1,8 +1,8 @@
-🕊️ MSCU Website
+MSCU Website
 
 A full-stack web platform for the Medical School Christian Union (MSCU) — designed to foster fellowship, spiritual growth, and information sharing among medical students.
 
-🌍 Overview
+ Overview
 
 The MSCU Website is a modern web application built using the MERN stack (MongoDB, Express.js, React + Vite, Node.js).
 It provides a trusted digital space for members to:
@@ -25,7 +25,7 @@ Database	MongoDB (via Mongoose)
 Hosting	Netlify (Frontend), Render (Backend)
 Version Control	Git & GitHub
 🧩 Project Structure
-MSCU-Website/
+MSCU/
 ├── Frontend/          # React + Vite application (UI)
 │   ├── src/
 │   ├── public/
