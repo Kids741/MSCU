@@ -117,7 +117,7 @@ Name	GitHub
 Add Your Name	@username
 Backend Developers
 Name	GitHub
-Dennis Kidake	@Kids741
+Dennis Kidake	https://github.com/Kids741
 
 Joshua Wambisi	@username
 🌐 Deployment Links
