@@ -1,133 +1,36 @@
-MSCU Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A full-stack web platform for the Medical School Christian Union (MSCU) — designed to foster fellowship, spiritual growth, and information sharing among medical students.
+## Getting Started
 
- Overview
+First, run the development server:
 
-The MSCU Website is a modern web application built using the MERN stack (MongoDB, Express.js, React + Vite, Node.js).
-It provides a trusted digital space for members to:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Connect and grow spiritually
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Access ministry updates and announcements
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-Share testimonies and devotionals
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Engage in Bible study resources
+## Learn More
 
-Stay informed about upcoming events and service opportunities
+To learn more about Next.js, take a look at the following resources:
 
-⚙️ Technology Stack
-Layer	Technology
-Frontend	React.js, Vite, Tailwind CSS
-Backend	Node.js, Express.js
-Database	MongoDB (via Mongoose)
-Hosting	Netlify (Frontend), Render (Backend)
-Version Control	Git & GitHub
-🧩 Project Structure
-MSCU/
-├── Frontend/          # React + Vite application (UI)
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
-├── Backend/           # Node.js + Express API
-│   ├── src/
-│   ├── models/
-│   ├── routes/
-│   └── package.json
-│
-├── .gitignore
-└── README.md
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-🚀 Getting Started
-1️⃣ Clone the repository
-git clone https://github.com/Kids741/MSCU-Website.git
-cd MSCU-Website
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-2️⃣ Set up the Frontend
-cd Frontend
-pnpm install
-pnpm run dev
+## Deploy on Vercel
 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-➡️ App runs on: http://localhost:3000
-
-3️⃣ Set up the Backend
-cd ../Backend
-pnpm install
-pnpm run dev
-
-
-➡️ API runs on: http://localhost:5000
-
-🔐 Environment Variables
-
-Create a .env file inside Backend/:
-
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-
-
-For Frontend/ (if needed):
-
-VITE_API_URL=http://localhost:5000
-
-✨ Features (Current & Planned)
-
-📰 News & announcements
-
-📅 Events calendar
-
-📖 Bible study materials
-
-💬 Member testimonials & devotionals
-
-🙏 Prayer requests submission
-
-👥 Leadership & ministry team info
-
-🔐 Admin dashboard for content management
-
-🤝 Contributing
-
-We welcome contributions from MSCU members!
-
-Create a feature branch
-
-git checkout -b feature/<your-feature-name>
-
-
-Commit changes
-
-git commit -m "Add <your-feature-name>"
-
-
-Push and open a Pull Request
-
-🔄 Branch Workflow
-Branch	Purpose
-main	Production-ready code
-dev	Active development
-feature/*	Individual feature or fix
-👩‍💻 Team & Contributors
-Frontend Developers
-Name	GitHub
-Add Your Name	@username
-Backend Developers
-Name	GitHub
-Dennis Kidake	https://github.com/Kids741
-
-Joshua Wambisi	@username
-🌐 Deployment Links
-Service	URL
-Frontend (Netlify)	Coming soon
-Backend (Render)	Coming soon
-Database (MongoDB Atlas)	Configured privately
-📜 License
-
-This project is created and maintained by the MSCU ICT docket for ministry and educational purposes.
-© 2025 Medical School Christian Union (MSCU) – All rights reserved.
-
-“Transforming lives through Christ within the medical fraternity.”
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
