@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MSCU - Medical Students Christian Union
 
-## Getting Started
+A modern, responsive website for the Medical Students Christian Union, built to connect medical students in faith, service, and excellence.
 
-First, run the development server:
+## 🙏 About MSCU
+
+The Medical Students Christian Union (MSCU) is a fellowship of medical students committed to serving Christ through medicine. We provide spiritual support, community service opportunities, and fellowship for Christian medical students.
+
+## ✨ Features
+
+- **Responsive Design** - Fully optimized for mobile, tablet, and desktop
+- **Dynamic Hero Section** - Engaging carousel showcasing MSCU activities
+- **Ministries Page** - Information about MSCU's various ministry programs
+- **Events Calendar** - Stay updated with upcoming fellowship and service events
+- **Contact Page** - Interactive contact form with Google Maps integration
+- **Modern UI** - Built with shadcn/ui components and Tailwind CSS
+
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org) with App Router
+- **Language**: TypeScript
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com)
+- **Package Manager**: pnpm
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone <your-repo-url>
+cd MSCU
+
+# Install dependencies
+pnpm install
+
+# Run the development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+MSCU/
+├── app/                    # Next.js app directory
+│   ├── page.tsx           # Home page
+│   ├── about/             # About page
+│   ├── ministries/        # Ministries page
+│   ├── events/            # Events page
+│   └── contact/           # Contact page
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   ├── header.tsx        # Navigation header
+│   ├── footer.tsx        # Footer component
+│   ├── hero.tsx          # Hero section
+│   └── carousel.tsx      # Image carousel
+├── lib/                  # Utility functions
+└── public/               # Static assets
+```
 
-## Learn More
+## 🎨 Color Scheme
 
-To learn more about Next.js, take a look at the following resources:
+- **Primary Blue**: #1E88E5
+- **Secondary Orange**: #FB8C00
+- **Accent Green**: #43A047
+- **Background**: #F5F5F5
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev          # Start development server
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+```
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📧 Contact
+
+For questions or support, reach out to us at contact@mscu.org
+
+## 📄 License
+
+This project is maintained by the Medical Students Christian Union.
+
+---
+
+Built with ❤️ and ✝️ by MSCU
