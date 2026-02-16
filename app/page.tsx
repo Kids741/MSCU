@@ -2,12 +2,12 @@ import Header from "@/components/header"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import MissionVision from "@/components/mission-vision"
-import ScriptureOfWeek from "@/components/scripture-of-week"
 import UpcomingEvents from "@/components/upcoming-events"
 import Resources from "@/components/resources"
 import PhotoGallery from "@/components/photo-gallery"
 import Testimonials from "@/components/testimonials"
 import Footer from "@/components/footer"
+import ThemeOfYear from "@/components/ThemeOfYear"
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <MissionVision />
-      <ScriptureOfWeek />
+      <ThemeOfYear />
       <UpcomingEvents />
       <Resources />
       <PhotoGallery />

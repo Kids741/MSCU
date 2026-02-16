@@ -1,3 +1,5 @@
+import { Award, Users, ShieldCheck, Heart, BookOpen, BookHeart, Smile, Target, Eye } from "lucide-react"
+
 export default function MissionVision() {
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
@@ -5,30 +7,30 @@ export default function MissionVision() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Mission */}
           <div>
-            <h3 className="text-2xl font-bold mb-4" style={{ color: "#1E88E5" }}>
-              Our Mission
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              To be a fellowship that equips Christian medical students to integrate their faith with their medical
-              calling, fostering excellence in medicine and compassionate service to humanity.
-            </p>
-            <div className="text-4xl" style={{ color: "#43A047" }}>
-              🎯
+            <div className="flex items-center gap-3 mb-4">
+              <Target className="w-8 h-8" style={{ color: "#1E88E5" }} />
+              <h3 className="text-2xl font-bold" style={{ color: "#1E88E5" }}>
+                Our Mission
+              </h3>
             </div>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              To proclaim Jesus Christ as Lord and Saviour, grow together in the knowledge of
+               Him through studying of scripture and nurturing our faith and to make Him known to
+                the campus community and beyond.
+            </p>
           </div>
 
           {/* Vision */}
           <div>
-            <h3 className="text-2xl font-bold mb-4" style={{ color: "#1E88E5" }}>
-              Our Vision
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              To develop Christian physicians who serve with integrity, compassion, and excellence; who are witnesses to
-              God's healing power and love in their medical practice.
-            </p>
-            <div className="text-4xl" style={{ color: "#43A047" }}>
-              ✨
+            <div className="flex items-center gap-3 mb-4">
+              <Eye className="w-8 h-8" style={{ color: "#1E88E5" }} />
+              <h3 className="text-2xl font-bold" style={{ color: "#1E88E5" }}>
+                Our Vision
+              </h3>
             </div>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Raising Chrisitan health workers who impact the society with Godly values.
+            </p>
           </div>
         </div>
 
@@ -40,14 +42,19 @@ export default function MissionVision() {
 
           <div className="grid md:grid-cols-5 gap-6">
             {[
-              { value: "Faith", emoji: "⛪" },
-              { value: "Service", emoji: "🤝" },
-              { value: "Integrity", emoji: "✋" },
-              { value: "Compassion", emoji: "❤️" },
-              { value: "Excellence", emoji: "⭐" },
+              { value: "Excellence", Icon: Award },
+              { value: "Teamwork", Icon: Users },
+              { value: "Integrity", Icon: ShieldCheck },
+              { value: "Accountability", Icon: Heart },
+              { value: "Sound Doctrine", Icon: BookOpen },
+              { value: "Obedience to God's word ", Icon: BookHeart },
+              { value: "Love for God and one another ", Icon: Smile },
+
             ].map((item, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl mb-3">{item.emoji}</div>
+                <div className="flex justify-center mb-3">
+                  <item.Icon className="w-10 h-10" style={{ color: "#1E88E5" }} />
+                </div>
                 <p className="font-semibold text-gray-800">{item.value}</p>
               </div>
             ))}

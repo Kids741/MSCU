@@ -40,16 +40,16 @@ export default function Hero() {
           A fellowship of medical students committed to faith, service, and excellence.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-12 mt-8 sm:mt-0">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-12 mt-30 sm:mt-12 px-8 sm:px-0">
           <button
-            className="px-4 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold text-white text-xs sm:text-base transition hover:opacity-90"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
             style={{ backgroundColor: "#FB8C00" }}
           >
             Join MSCU
           </button>
-          <Link href="/ministries">
+          <Link href="/ministries" className="w-full sm:w-auto">
             <button
-              className="px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
               style={{ backgroundColor: "#43A047" }}
             >
               Explore Ministries

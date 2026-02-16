@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface CarouselProps {
@@ -48,7 +49,15 @@ export default function Carousel({ images }: CarouselProps) {
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            <img src={image.src || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
+            <Image
+              src={image.src || "/placeholder.svg"}
+              alt={image.alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              priority={index === 0}
+              quality={85}
+            />
           </div>
         ))}
       </div>

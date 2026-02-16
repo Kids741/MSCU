@@ -1,27 +1,29 @@
+import { Calendar, MapPin } from "lucide-react"
+
 export default function UpcomingEvents() {
   const events = [
     {
       title: "Bible Study Fellowship",
-      date: "Every Wednesday, 7 PM",
-      location: "Campus Chapel",
+      date: "Every Thursday, 7 PM",
+      location: "Student residence",
       color: "#1E88E5",
     },
     {
-      title: "Medical Missions Outreach",
-      date: "Next Saturday",
-      location: "Community Health Center",
+      title: "Battle of Years",
+      date: "27th March 2026",
+      location: "KNH Mess Hall",
       color: "#43A047",
     },
     {
-      title: "Prayer & Worship Night",
-      date: "Friday, December 13",
-      location: "Student Center",
+      title: "Union Prayer Day ",
+      date: "Every Monday 5.00-6.00pm",
+      location: "Prayer room",
       color: "#FB8C00",
     },
     {
-      title: "Leadership Retreat",
-      date: "December 27-29",
-      location: "Mountain Retreat Center",
+      title: "Elders Night",
+      date: "May",
+      location: "Nairobi Baptist Church",
       color: "#1E88E5",
     },
   ]
@@ -44,20 +46,29 @@ export default function UpcomingEvents() {
                 {event.title}
               </h3>
               <div className="space-y-2 text-gray-700">
-                <p>📅 {event.date}</p>
-                <p>📍 {event.location}</p>
+                <p className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" style={{ color: event.color }} />
+                  {event.date}
+                </p>
+                <p className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" style={{ color: event.color }} />
+                  {event.location}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-12 text-center">
-          <button
-            className="px-8 py-3 rounded-lg text-white font-semibold transition hover:opacity-90"
+          <a
+            href="/program-calendar-2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-3 rounded-lg text-white font-semibold transition hover:opacity-90"
             style={{ backgroundColor: "#1E88E5" }}
           >
             View Full Calendar
-          </button>
+          </a>
         </div>
       </div>
     </section>
