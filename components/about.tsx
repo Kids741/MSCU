@@ -15,15 +15,15 @@ export default function About() {
         {[
           {
             title: "Faith-Centered",
-            description: "We integrate our Christian faith with our medical education and practice.",
+            description: "The Medical School Christian Union is a body of Christian students in The University of Nairobi Medical School bound together by common faith in the only God..",
+          },
+          {
+            title: "Spirit-Led",
+            description: "We are joined together with heavenly calling to live holy and righteous lives committed to living according to the Holy Bible, guided by the Holy Spirit and the Holy Bible.",
           },
           {
             title: "Community Focused",
-            description: "Together, we support one another through the challenges of medical school.",
-          },
-          {
-            title: "Service Oriented",
-            description: "We are dedicated to serving our communities with compassion and excellence.",
+            description: "We are exclusively non-political, interdenominational and non-denominational, and we appreciate our ethnic, cultural, denominational and gender diversity",
           },
         ].map((item, i) => (
           <div

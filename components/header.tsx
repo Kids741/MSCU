@@ -12,7 +12,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: "#E0E0E0" }}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/mscu-logo.png" alt="MSCU Logo" width={50} height={50} className="h-12 w-auto" />
+          <Image src="/mscu.png" alt="MSCU Logo" width={50} height={50} className="h-12 w-auto" />
           <span className="text-2xl font-bold" style={{ color: "#1E88E5" }}>
             MSCU
           </span>

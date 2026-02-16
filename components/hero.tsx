@@ -1,23 +1,24 @@
 "use client"
 import Link from "next/link"
+import Image from "next/image"
 import Carousel from "./carousel"
 
 export default function Hero() {
   const carouselImages = [
     {
-      src: "/medical-students-fellowship.jpg",
+      src: "/Hero/image1.png",
       alt: "MSCU fellowship gathering",
     },
     {
-      src: "/christian-medical-ministry.jpg",
+      src: "/Hero/image2.png",
       alt: "Christian medical ministry in action",
     },
     {
-      src: "/healthcare-service-community.jpg",
+      src: "/Hero/image3.png",
       alt: "Community healthcare service",
     },
     {
-      src: "/faith-based-medical-education.jpg",
+      src: "/Hero/image4.png",
       alt: "Faith-based medical education",
     },
   ]
