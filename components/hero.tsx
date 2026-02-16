@@ -41,12 +41,14 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-12 mt-30 sm:mt-12 px-8 sm:px-0">
-          <button
-            className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
-            style={{ backgroundColor: "#FB8C00" }}
-          >
-            Join MSCU
-          </button>
+          <Link href="/contact" className="w-full sm:w-auto">
+            <button
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
+              style={{ backgroundColor: "#FB8C00" }}
+            >
+              Join MSCU
+            </button>
+          </Link>
           <Link href="/ministries" className="w-full sm:w-auto">
             <button
               className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"

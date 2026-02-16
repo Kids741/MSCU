@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Facebook, Twitter, Instagram } from "lucide-react"
 
 export default function Footer() {
@@ -12,19 +13,19 @@ export default function Footer() {
             <h4 className="font-bold text-white mb-4">About MSCU</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/#about" className="text-gray-100 hover:text-white transition">
                   Who We Are
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/#mission-vision" className="text-gray-100 hover:text-white transition">
                   Mission & Vision
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/#about" className="text-gray-100 hover:text-white transition">
                   Leadership
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -34,19 +35,19 @@ export default function Footer() {
             <h4 className="font-bold text-white mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/ministries" className="text-gray-100 hover:text-white transition">
+                <Link href="/ministries" className="text-gray-100 hover:text-white transition">
                   Ministries
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog" className="text-gray-100 hover:text-white transition">
+                <Link href="/devotionals" className="text-gray-100 hover:text-white transition">
                   Devotionals
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/#events" className="text-gray-100 hover:text-white transition">
                   Events
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -56,19 +57,19 @@ export default function Footer() {
             <h4 className="font-bold text-white mb-4">Connect</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/contact" className="text-gray-100 hover:text-white transition">
+                <Link href="/contact" className="text-gray-100 hover:text-white transition">
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/contact" className="text-gray-100 hover:text-white transition">
                   Prayer Requests
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-100 hover:text-white transition">
+                <Link href="/contact" className="text-gray-100 hover:text-white transition">
                   Get Involved
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
