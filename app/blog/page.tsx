@@ -1,94 +1,130 @@
+import Link from "next/link"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import { BookOpen, Calendar, ArrowRight } from "lucide-react"
 
-const blogPosts = [
-  {
-    title: "The Future of Healthcare Technology",
-    date: "December 28, 2025",
-    excerpt: "Exploring how AI and digital innovation are transforming patient care and medical education.",
-    category: "Technology",
-  },
-  {
-    title: "Student Life at MSCU",
-    date: "December 20, 2025",
-    excerpt: "A behind-the-scenes look at the vibrant community and activities that define the MSCU experience.",
-    category: "Community",
-  },
-  {
-    title: "Interview: Dr. Sarah's Journey",
-    date: "December 15, 2025",
-    excerpt: "An inspiring conversation with one of our faculty members about their path in medicine and faith.",
-    category: "Features",
-  },
-  {
-    title: "Research Highlights",
-    date: "December 8, 2025",
-    excerpt: "Showcasing the groundbreaking research being conducted by our students and faculty members.",
-    category: "Research",
-  },
-  {
-    title: "Wellness Tips for Medical Students",
-    date: "December 1, 2025",
-    excerpt: "Practical advice for maintaining physical and mental health during your medical journey.",
-    category: "Wellness",
-  },
-  {
-    title: "Alumni Spotlight",
-    date: "November 24, 2025",
-    excerpt: "Celebrating the achievements of MSCU alumni making a difference in healthcare and their communities.",
-    category: "Alumni",
-  },
-]
+function normalizeSlug(raw: string) {
+  try {
+    return encodeURIComponent(decodeURIComponent(raw))
+  } catch {
+    return encodeURIComponent(raw)
+  }
+}
 
-export default function BlogPage() {
+type WPPost = {
+  id: number
+  slug: string
+  date: string
+  title: { rendered: string }
+  excerpt: { rendered: string }
+}
+
+async function getPosts(): Promise<WPPost[]> {
+  const res = await fetch(
+    "https://public-api.wordpress.com/wp/v2/sites/msculiterature.wordpress.com/posts?_fields=id,slug,date,title.rendered,excerpt.rendered&per_page=12",
+    {
+      next: { revalidate: 300 },
+    }
+  )
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch posts")
+  }
+
+  return res.json()
+}
+
+export default async function BlogIndexPage() {
+  const posts = await getPosts()
+
   return (
-    <main>
+    <>
       <Header />
+      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+        {/* Hero banner */}
+        <section className="bg-blue-600 text-white py-16 md:py-24">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="flex justify-center mb-4">
+              <BookOpen className="w-12 h-12 opacity-80" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              MSCU Blog
+            </h1>
+            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+              Stories, devotionals, and reflections from our community of
+              faith-driven medical students.
+            </p>
+          </div>
+        </section>
 
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#E3F2FD" }}>
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center" style={{ color: "#1E88E5" }}>
-            Blog
-          </h1>
-          <p className="text-lg text-gray-700 text-center max-w-2xl mx-auto">
-            Stories, insights, and updates from the MSCU community about medicine, faith, and making a difference.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post, i) => (
-            <article
-              key={i}
-              className="p-8 rounded-lg shadow-sm hover:shadow-md transition border-l-4 bg-white cursor-pointer"
-              style={{ borderColor: "#1E88E5" }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span
-                  className="text-xs font-semibold px-3 py-1 rounded-full text-white"
-                  style={{ backgroundColor: "#FB8C00" }}
-                >
-                  {post.category}
-                </span>
-                <span className="text-sm text-gray-500">{post.date}</span>
-              </div>
-              <h2 className="text-2xl font-bold mb-4" style={{ color: "#1E88E5" }}>
-                {post.title}
+        {/* Posts grid */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          {!posts.length ? (
+            <div className="text-center py-20">
+              <BookOpen className="w-16 h-16 mx-auto text-slate-300 mb-4" />
+              <h2 className="text-2xl font-semibold text-slate-700 mb-2">
+                No posts yet
               </h2>
-              <p className="text-gray-700 leading-relaxed mb-6">{post.excerpt}</p>
-              <button
-                className="text-white font-semibold py-2 px-4 rounded-lg transition hover:opacity-90"
-                style={{ backgroundColor: "#1E88E5" }}
-              >
-                Read More
-              </button>
-            </article>
-          ))}
-        </div>
-      </section>
+              <p className="text-slate-500">Check back soon for new content.</p>
+            </div>
+          ) : (
+            <div className="grid gap-8 md:grid-cols-2">
+              {posts.map((post, i) => (
+                <article
+                  key={post.id}
+                  className={`group relative bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
+                    i === 0 ? "md:col-span-2" : ""
+                  }`}
+                >
+                  {/* Accent bar */}
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600" />
 
+                  <div className="p-6 md:p-8 pt-7">
+                    {/* Date */}
+                    <div className="flex items-center gap-2 text-sm text-slate-400 mb-3">
+                      <Calendar className="w-4 h-4" />
+                      <time dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </time>
+                    </div>
+
+                    {/* Title */}
+                    <h2
+                      className={`font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors ${
+                        i === 0 ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
+                      }`}
+                    >
+                      <Link href={`/blog/${normalizeSlug(post.slug)}`}>
+                        <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                      </Link>
+                    </h2>
+
+                    {/* Excerpt */}
+                    <div
+                      className="text-slate-600 leading-relaxed line-clamp-3 mb-5 prose prose-slate prose-sm max-w-none"
+                      dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                    />
+
+                    {/* Read more */}
+                    <Link
+                      href={`/blog/${normalizeSlug(post.slug)}`}
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group/link"
+                    >
+                      Read more
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
