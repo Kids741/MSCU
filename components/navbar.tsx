@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 
-export default function Header() {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -25,17 +25,17 @@ export default function Header() {
 
         {/* Desktop menu */}
         <div className="hidden md:flex gap-8 items-center">
-          <Link href="#about" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/#about" className="text-gray-700 hover:text-blue-600 transition">
             About
           </Link>
-          <Link href="/ministries" className="text-gray-700 hover:text-blue-600 transition">
-            Ministries
-          </Link>
-          <Link href="/devotionals" className="text-gray-700 hover:text-blue-600 transition">
-            Devotionals
+          <Link href="/leadership" className="text-gray-700 hover:text-blue-600 transition">
+            Leadership
           </Link>
           <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">
             Blog
+          </Link>
+          <Link href="#resources" className="text-gray-700 hover:text-blue-600 transition">
+            Resources
           </Link>
           <Link
             href="/contact"
@@ -49,17 +49,20 @@ export default function Header() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-white border-b flex flex-col gap-4 p-4 md:hidden">
-            <Link href="#about" className="text-gray-700">
+            <Link href="/#about" className="text-gray-700">
               About
             </Link>
-            <Link href="/ministries" className="text-gray-700">
-              Ministries
+            <Link href="/leadership" className="text-gray-700">
+              Leadership
             </Link>
             <Link href="/devotionals" className="text-gray-700">
               Devotionals
             </Link>
             <Link href="/blog" className="text-gray-700">
               Blog
+            </Link>
+            <Link href="#resources" className="text-gray-700">
+              Resources
             </Link>
             <Link
               href="/contact"
