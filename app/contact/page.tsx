@@ -1,6 +1,6 @@
 "use client"
 
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Input } from "@/components/ui/input"
 import Script from "next/script"
@@ -10,15 +10,16 @@ import {
   MapPin,
   Handshake,
   FacebookLogo,
-  TwitterLogo,
   InstagramLogo,
+  TiktokLogo,
+  YoutubeLogo,
 } from "phosphor-react"
 
 export default function ContactPage() {
   return (
     <main>
       <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
-      <Header />
+      <Navbar />
 
       {/* Hero */}
       <section
@@ -114,37 +115,26 @@ export default function ContactPage() {
                     <FacebookLogo size={22} weight="fill" />
                   </a>
 
-                  <a href="#" className="text-gray-600 hover:text-blue-600 transition">
-                    <TwitterLogo size={22} weight="fill" />
+                  <a href="https://x.com/mscuon" className="text-gray-600 hover:text-blue-600 transition">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                   </a>
 
-                  <a href="#" className="text-gray-600 hover:text-blue-600 transition">
+                  <a href="https://www.instagram.com/mscuon?igsh=aHEwNmV0ZWxwYWll" className="text-gray-600 hover:text-blue-600 transition">
                     <InstagramLogo size={22} weight="fill" />
+                  </a>
+
+                  <a href="https://vm.tiktok.com/ZS9eP4x8eDN7e-EO4J4/" className="text-gray-600 hover:text-blue-600 transition">
+                    <TiktokLogo size={22} weight="fill" />
+                  </a>
+
+                  <a href="https://youtube.com/@mscuon.?si=yzlvwWx1-6ipwFq3" className="text-gray-600 hover:text-blue-600 transition">
+                    <YoutubeLogo size={22} weight="fill" />
                   </a>
                 </div>
               </div>
             </div>
-
-            {/* Newsletter */}
-            <div
-              className="p-6 rounded-xl"
-              style={{ backgroundColor: "#E8F5E9" }}
-            >
-              <h4 className="font-bold mb-2" style={{ color: "#43A047" }}>
-                Newsletter
-              </h4>
-
-              <p className="text-sm text-gray-700 mb-4">
-                Subscribe to receive weekly devotionals and updates about MSCU events.
-              </p>
-
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                className="w-full"
-              />
-            </div>
-
           </div>
         </div>
       </section>

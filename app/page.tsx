@@ -1,4 +1,4 @@
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import MissionVision from "@/components/mission-vision"
@@ -12,7 +12,7 @@ import ThemeOfYear from "@/components/ThemeOfYear"
 export default function Home() {
   return (
     <main>
-      <Header />
+      <Navbar />
       <Hero />
       <About />
       <MissionVision />

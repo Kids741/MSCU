@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ArrowLeft, Calendar } from "lucide-react"
 
@@ -67,7 +67,7 @@ export default async function PostPage({
   if (!post)
     return (
       <>
-        <Header />
+        <Navbar />
         <main className="min-h-screen bg-slate-50 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-slate-700 mb-4">Post not found</h1>
@@ -95,7 +95,7 @@ export default async function PostPage({
 
   return (
     <>
-      <Header />
+      <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero area */}
         <div className="bg-blue-600 text-white py-12 md:py-20">

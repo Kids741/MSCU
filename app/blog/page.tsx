@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Header from "@/components/header"
+import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { BookOpen, Calendar, ArrowRight } from "lucide-react"
 
@@ -39,7 +39,7 @@ export default async function BlogIndexPage() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero banner */}
         <section className="bg-blue-600 text-white py-16 md:py-24">

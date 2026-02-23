@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram } from "lucide-react"
+import { Facebook, Instagram, Youtube } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -81,11 +81,21 @@ export default function Footer() {
               <a href="#" className="hover:opacity-75 transition" aria-label="Facebook">
                 <Facebook size={24} className="text-white" />
               </a>
-              <a href="#" className="hover:opacity-75 transition" aria-label="Twitter">
-                <Twitter size={24} className="text-white" />
+              <a href="https://x.com/mscuon" className="hover:opacity-75 transition" aria-label="X">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
-              <a href="#" className="hover:opacity-75 transition" aria-label="Instagram">
+              <a href="https://www.instagram.com/mscuon?igsh=aHEwNmV0ZWxwYWll" className="hover:opacity-75 transition" aria-label="Instagram">
                 <Instagram size={24} className="text-white" />
+              </a>
+              <a href="https://vm.tiktok.com/ZS9eP4x8eDN7e-EO4J4/" className="hover:opacity-75 transition" aria-label="TikTok">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="text-white">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.98a8.18 8.18 0 004.76 1.52V7.05a4.84 4.84 0 01-1-.36z" />
+                </svg>
+              </a>
+              <a href="https://youtube.com/@mscuon.?si=yzlvwWx1-6ipwFq3" className="hover:opacity-75 transition" aria-label="YouTube">
+                <Youtube size={24} className="text-white" />
               </a>
             </div>
           </div>
