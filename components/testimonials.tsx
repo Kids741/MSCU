@@ -1,8 +1,20 @@
+"use client"
+
+import { useState } from "react"
+
+const CHAR_LIMIT = 200
+
 export default function Testimonials() {
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({})
+
+  const toggleExpand = (index: number) => {
+    setExpandedCards((prev) => ({ ...prev, [index]: !prev[index] }))
+  }
+
   const testimonials = [
     {
       name: "Cyrus Mwema",
-      role: "Mbchb six Student",
+      role: "6th Year Mbchb Student",
       text: "MSCU has been a home away from home that has greatly enriched my campus experience. I have grown spiritually, socially, and emotionally through the wonderful fellowship, mentorship, opportunities to be part of teams and leadership, and being a part of the vibrant community.  I have made many wonderful friends from the fellowship who have celebrated with me in my happiest days and been there even through the tough portions of the journey. We've worshipped together, dissected the word in BS, played many games, had fun in many competitions, bonded in so many of our associates beautiful homes, attended weddings, just so many memories. Better, I have learnt to be an active part of the Church and how to be the church rather than merely going to church. I will be a more dutiful, loving and competent doctor because of MSCU.",
     },
     {
@@ -11,8 +23,8 @@ export default function Testimonials() {
       text: "MSCU has been a safe haven, a true home.I’ve encountered God through worship, through the sharing of the Word, and most beautifully, through the people Here, faith is not just believed—it’s lived",
     },
     {
-      name: "Emily Rodriguez",
-      role: "Medical Missions Lead",
+      name: "Neoline Chepkirui",
+      role: "1st year Nursing Student",
       text: "The outreach opportunities through MSCU have shown me the real-world impact of combining medicine with Christian service.",
     },
   ]
@@ -37,7 +49,20 @@ export default function Testimonials() {
                 </span>
               ))}
             </div>
-            <p className="text-gray-700 mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+            <p className="text-gray-700 mb-6 italic leading-relaxed">
+              &ldquo;{expandedCards[i] || testimonial.text.length <= CHAR_LIMIT
+                ? testimonial.text
+                : `${testimonial.text.slice(0, CHAR_LIMIT)}...`}&rdquo;
+            </p>
+            {testimonial.text.length > CHAR_LIMIT && (
+              <button
+                onClick={() => toggleExpand(i)}
+                className="text-sm font-semibold mb-4 hover:underline"
+                style={{ color: "#1E88E5" }}
+              >
+                {expandedCards[i] ? "Show less" : "Read more"}
+              </button>
+            )}
             <div>
               <p className="font-bold text-gray-900">{testimonial.name}</p>
               <p className="text-sm" style={{ color: "#1E88E5" }}>
