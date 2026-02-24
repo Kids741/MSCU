@@ -126,7 +126,7 @@ const leaders = [
   { role: "1st Vice Chairperson", name: "Banncy Nasiro", image: "/Leadership/vp1.webp" },
   { role: "2nd Vice Chairperson", name: "Bravine Endede", image: "/Leadership/vp2.webp" },
   { role: "Secretary", name: "Grace Mbatia", image: "/Leadership/sec.webp" },
-  { role: "Vice Secretary", name: "Livya Mugure", image: "/Leadership/vicesec.webp" },
+  { role: "Vice Secretary", name: "Livya Mugure", image: "/Leadership/vicesec.webp", objectPosition: "50% 5%" },
   { role: "Treasurer", name: "Josephat Kimani", image: "/Leadership/treasurer.webp" },
   { role: "In-reach Evangelism and Missions’ Coordinator", name: "Chris Onyango", image: "/Leadership/inreach.webp" },
   { role: "Out-reach Evangelism and Missions’ Coordinator", name: "Ian Ng'ang'a", image: "/Leadership/outreach.webp" },
@@ -207,11 +207,12 @@ export default function MinistriesPage() {
                 className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100"
               >
                 {/* IMAGE */}
-                <div className="relative h-64 sm:h-72 overflow-hidden bg-gray-100">
+                <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-100">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    style={{ objectPosition: (leader as any).objectPosition ?? "50% 15%" }}
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition" />
