@@ -122,21 +122,21 @@ const ministries: { title: string; icon: Icon; description: string }[] = [
 /* ---------------- LEADERS ---------------- */
 
 const leaders = [
-  { role: "Chairperson", name: "Henry Madaga", image: "/Leadership/chairperson.png" },
-  { role: "1st Vice Chairperson", name: "Banncy Nasiro", image: "/Leadership/vp1.png" },
-  { role: "2nd Vice Chairperson", name: "Bravine Endede", image: "/Leadership/vp2.png" },
-  { role: "Secretary", name: "Grace Mbatia", image: "/Leadership/sec.png" },
-  { role: "Vice Secretary", name: "Livya Mugure", image: "/Leadership/vicesec.png" },
-  { role: "Treasurer", name: "Josephat Kimani", image: "/Leadership/treasurer.png" },
-  { role: "In-reach Evangelism and Missions’ Coordinator", name: "Chris Onyango", image: "/Leadership/inreach.png" },
-  { role: "Out-reach Evangelism and Missions’ Coordinator", name: "Ian Ng'ang'a", image: "/Leadership/outreach.png" },
-  { role: "Bible Study and Training Coordinator", name: "Olive Thayu", image: "/Leadership/bs.png" },
-  { role: "Worship Coordinator", name: "Robbin Wanjala", image: "/Leadership/worship.png" },
-  { role: "Prayer Coordinator", name: "Newton Kirmi", image: "/Leadership/prayer.png" },
-  { role: "Creative Ministries Coordinator", name: "Esther Muthoni", image: "/Leadership/creative.png" },
-  { role: "Associates, Advocacy and Partnerships Coordinator (ASAAP)", name: "Dennis Kidake", image: "/Leadership/asaap.png" },
-  { role: "Tech-Team/ICT Coordinator", name: "Howard Kiprono", image: "/Leadership/ict.png" },
-  { role: "Discipleship Coordinator", name: "Terran Mwangangi", image: "/Leadership/discipleship.png" },
+  { role: "Chairperson", name: "Henry Madaga", image: "/Leadership/chairperson.webp" },
+  { role: "1st Vice Chairperson", name: "Banncy Nasiro", image: "/Leadership/vp1.webp" },
+  { role: "2nd Vice Chairperson", name: "Bravine Endede", image: "/Leadership/vp2.webp" },
+  { role: "Secretary", name: "Grace Mbatia", image: "/Leadership/sec.webp" },
+  { role: "Vice Secretary", name: "Livya Mugure", image: "/Leadership/vicesec.webp" },
+  { role: "Treasurer", name: "Josephat Kimani", image: "/Leadership/treasurer.webp" },
+  { role: "In-reach Evangelism and Missions’ Coordinator", name: "Chris Onyango", image: "/Leadership/inreach.webp" },
+  { role: "Out-reach Evangelism and Missions’ Coordinator", name: "Ian Ng'ang'a", image: "/Leadership/outreach.webp" },
+  { role: "Bible Study and Training Coordinator", name: "Olive Thayu", image: "/Leadership/bs.webp" },
+  { role: "Worship Coordinator", name: "Robbin Wanjala", image: "/Leadership/worship.webp" },
+  { role: "Prayer Coordinator", name: "Newton Kirmi", image: "/Leadership/prayer.webp" },
+  { role: "Creative Ministries Coordinator", name: "Esther Muthoni", image: "/Leadership/creative.webp" },
+  { role: "Associates, Advocacy and Partnerships Coordinator (ASAAP)", name: "Dennis Kidake", image: "/Leadership/asaap.webp" },
+  { role: "Tech-Team/ICT Coordinator", name: "Howard Kiprono", image: "/Leadership/ict.webp" },
+  { role: "Discipleship Coordinator", name: "Terran Mwangangi", image: "/Leadership/discipleship.webp" },
 ]
 
 
