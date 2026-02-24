@@ -9,23 +9,27 @@ export default function PhotoGallery() {
   const galleryImages = [
     {
       id: 1,
-      src: "/medical-students-fellowship.jpg",
-      title: "Medical Fellowship",
-      description: "Students bonding during our fellowship programs",
+      src: "/Photogallery/cultural.webp",
+      title: "Cultural sunday",
+      description: "Celebrating diversity and unity in our medical community",
+      link: "https://drive.google.com/drive/folders/1OBwKkFUUj-6AoYfZ68StrHr2GoMJlzpN"
     },
     {
       id: 2,
-      src: "/christian-medical-ministry.jpg",
-      title: "Ministry Work",
-      description: "Serving the community through Christian medical outreach",
+      src: "/Photogallery/worshipexp.webp",
+      title: "Worship Experience",
+      description: "Spiritual connection and worship in our medical community",
+      link:"https://drive.google.com/drive/folders/1CSsqrQ6czaiu69yu8NSo6iLuK8Ik6XE-"
     },
     {
       id: 3,
-      src: "/healthcare-service-community.jpg",
-      title: "Community Service",
-      description: "Healthcare professionals serving vulnerable populations",
+      src: "/Photogallery/litsunday.webp",
+      title: "Literature Sunday",
+      description: "Exploring the intersection of faith, medicine and literature in our community",
+      link: "https://photos.app.goo.gl/sUiP48KmB2efXHPx5"
     },
-    {
+
+    /* {
       id: 4,
       src: "/faith-based-medical-education.jpg",
       title: "Medical Education",
@@ -43,6 +47,7 @@ export default function PhotoGallery() {
       title: "Prayer Fellowship",
       description: "Spiritual gathering of medical students and professionals",
     },
+    */
   ]
 
   const handleNext = () => {
@@ -58,7 +63,7 @@ export default function PhotoGallery() {
   }
 
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-white" id="photo-gallery">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-4 text-blue-600">Photo Gallery</h2>
         <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
@@ -67,10 +72,12 @@ export default function PhotoGallery() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryImages.map((image, index) => (
-            <div
+            <a
               key={image.id}
-              onClick={() => setSelectedImage(index)}
-              className="relative overflow-hidden rounded-lg cursor-pointer group"
+              href={image.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative overflow-hidden rounded-lg cursor-pointer group block"
             >
               <img
                 src={image.src || "/placeholder.svg"}
@@ -81,7 +88,7 @@ export default function PhotoGallery() {
                 <h3 className="text-white font-semibold text-lg">{image.title}</h3>
                 <p className="text-white/80 text-sm">{image.description}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

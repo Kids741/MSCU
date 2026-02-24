@@ -39,7 +39,7 @@ export default function Resources() {
   ]
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-white to-slate-50">
+    <section id="resources" className="py-16 px-4 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-4 text-blue-600">Resources</h2>
         <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">

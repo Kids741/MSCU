@@ -34,8 +34,11 @@ export default function Navbar() {
           <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">
             Blog
           </Link>
-          <Link href="#resources" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/#resources" className="text-gray-700 hover:text-blue-600 transition">
             Resources
+          </Link>
+          <Link href="/#photo-gallery" className="text-gray-700 hover:text-blue-600 transition">
+            Photo Gallery
           </Link>
           <Link
             href="/contact"
@@ -55,14 +58,14 @@ export default function Navbar() {
             <Link href="/leadership" className="text-gray-700">
               Leadership
             </Link>
-            <Link href="/devotionals" className="text-gray-700">
-              Devotionals
-            </Link>
             <Link href="/blog" className="text-gray-700">
               Blog
             </Link>
-            <Link href="#resources" className="text-gray-700">
+            <Link href="/#resources" className="text-gray-700">
               Resources
+            </Link>
+             <Link href="/#photo-gallery" className="text-gray-700">
+              Photo Gallery
             </Link>
             <Link
               href="/contact"

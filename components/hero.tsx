@@ -24,14 +24,14 @@ export default function Hero() {
   ]
 
   return (
-    <section className="relative w-full min-h-[70vh] sm:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full aspect-video min-h-[320px] sm:aspect-auto sm:min-h-[80vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
         <Carousel images={carouselImages} />
       </div>
 
       <div className="absolute inset-0 bg-black/40" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-16 md:py-24 lg:py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-4 sm:py-16 md:py-24 lg:py-32">
         <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 text-balance">
           Serving Christ Through Medicine
         </h1>
@@ -40,7 +40,7 @@ export default function Hero() {
           A fellowship of medical students committed to faith, service, and excellence.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-12 mt-30 sm:mt-12 px-8 sm:px-0">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4 sm:mb-12 mt-4 sm:mt-12 px-8 sm:px-0">
           <Link href="/contact" className="w-full sm:w-auto">
             <button
               className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
@@ -49,7 +49,7 @@ export default function Hero() {
               Join MSCU
             </button>
           </Link>
-          <Link href="/ministries" className="w-full sm:w-auto">
+          <Link href="/leadership" className="w-full sm:w-auto">
             <button
               className="w-full sm:w-auto px-6 sm:px-8 py-3 rounded-lg font-semibold text-white text-sm sm:text-base transition hover:opacity-90"
               style={{ backgroundColor: "#43A047" }}

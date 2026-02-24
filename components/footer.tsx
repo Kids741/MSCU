@@ -23,9 +23,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#about" className="text-gray-100 hover:text-white transition">
-                  Leadership
-                </Link>
               </li>
             </ul>
           </div>
@@ -35,18 +32,18 @@ export default function Footer() {
             <h4 className="font-bold text-white mb-4">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/ministries" className="text-gray-100 hover:text-white transition">
-                  Ministries
-                </Link>
-              </li>
-              <li>
-                <Link href="/devotionals" className="text-gray-100 hover:text-white transition">
-                  Devotionals
+                <Link href="/leadership" className="text-gray-100 hover:text-white transition">
+                  Leadership & Ministries
                 </Link>
               </li>
               <li>
                 <Link href="/#events" className="text-gray-100 hover:text-white transition">
                   Events
+                </Link>
+              </li>
+              <li>
+                 <Link href="/#resources" className="text-gray-100 hover:text-white transition">
+                  Resources
                 </Link>
               </li>
             </ul>
@@ -78,9 +75,6 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white mb-4">Follow Us</h4>
             <div className="flex gap-4">
-              <a href="#" className="hover:opacity-75 transition" aria-label="Facebook">
-                <Facebook size={24} className="text-white" />
-              </a>
               <a href="https://x.com/mscuon" className="hover:opacity-75 transition" aria-label="X">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="text-white">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

@@ -1,14 +1,14 @@
 export default function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "Second Year Student",
-      text: "MSCU has been a beacon of hope during my medical school journey. The community, the faith, and the support have been transformative.",
+      name: "Cyrus Mwema",
+      role: "Mbchb six Student",
+      text: "MSCU has been a home away from home that has greatly enriched my campus experience. I have grown spiritually, socially, and emotionally through the wonderful fellowship, mentorship, opportunities to be part of teams and leadership, and being a part of the vibrant community.  I have made many wonderful friends from the fellowship who have celebrated with me in my happiest days and been there even through the tough portions of the journey. We've worshipped together, dissected the word in BS, played many games, had fun in many competitions, bonded in so many of our associates beautiful homes, attended weddings, just so many memories. Better, I have learnt to be an active part of the Church and how to be the church rather than merely going to church. I will be a more dutiful, loving and competent doctor because of MSCU.",
     },
     {
-      name: "David Chen",
-      role: "Fourth Year Student",
-      text: "Being part of MSCU taught me that medicine is not just about treating diseases, but about healing the whole person with compassion.",
+      name: "Lilian Wambui",
+      role: "3rd Year Dental Student",
+      text: "MSCU has been a safe haven, a true home.I’ve encountered God through worship, through the sharing of the Word, and most beautifully, through the people Here, faith is not just believed—it’s lived",
     },
     {
       name: "Emily Rodriguez",
@@ -20,7 +20,7 @@ export default function Testimonials() {
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center" style={{ color: "#1E88E5" }}>
-        Member Reflections
+        Testimonials
       </h2>
 
       <div className="grid md:grid-cols-3 gap-8">
