@@ -148,21 +148,21 @@ const leadersByYear: Record<"2025" | "2026", Leader[]> = {
     { role: "Discipleship Coordinator", name: "Terran Mwangangi", image: "/Leadership/2025/discipleship.webp" },
   ],
   "2026": [
-    { role: "Chairperson", name: "Josephat Kimani", image: "/Leadership/2026/chairperson.webp", objectPosition: "50% 5%" },
-    { role: "1st Vice Chairperson", name: "Joy Chege", image: "/Leadership/2026/vp1.webp", objectPosition: "50% 5%" },
+    { role: "Chairperson", name: "Josephat Kimani", image: "/Leadership/2026/chairperson.webp", objectPosition: "50% 15%" },
+    { role: "1st Vice Chairperson", name: "Joy Chege", image: "/Leadership/2026/vp1.webp", objectPosition: "50% 15%" },
     { role: "2nd Vice Chairperson", name: "Victor Mariera", image: "/Leadership/2026/vp2.webp", objectPosition: "50% 5%" },
-    { role: "Secretary", name: "Janice Wakio", image: "/Leadership/2026/sec.webp", objectPosition: "50% 5%" },
-    { role: "Vice Secretary", name: "Gift Okolla", image: "/Leadership/2026/vicesec.webp", objectPosition: "50% 0%" },
-    { role: "Treasurer", name: "Ian Ng'ang'a", image: "/Leadership/2026/treasurer.webp", objectPosition: "50% 5%" },
-    { role: "In-reach Evangelism and Missions' Coordinator", name: "Michael Sakoi", image: "/Leadership/2026/inreach.webp", objectPosition: "50% 5%" },
-    { role: "Out-reach Evangelism and Missions' Coordinator", name: "Chris Onyango", image: "/Leadership/2026/outreach.webp", objectPosition: "50% 5%" },
-    { role: "Bible Study and Training Coordinator", name: "Lilian Wambui", image: "/Leadership/2026/bs.webp", objectPosition: "50% 5%" },
-    { role: "Worship Coordinator", name: "Newton Aggey", image: "/Leadership/2026/worship.webp", objectPosition: "50% 5%" },
-    { role: "Prayer Coordinator", name: "Newton Kirimi", image: "/Leadership/2026/prayer.webp", objectPosition: "50% 5%" },
-    { role: "Creative Ministries Coordinator", name: "Naom OMare", image: "/Leadership/2026/creative.webp", objectPosition: "50% 5%" },
-    { role: "Associates, Advocacy and Partnerships Coordinator (ASAAP)", name: "Joy Gathura", image: "/Leadership/2026/asaap.webp", objectPosition: "50% 5%" },
-    { role: "Tech-Team/ICT Coordinator", name: "Ushindi Mulai", image: "/Leadership/2026/ict.webp", objectPosition: "50% 5%" },
-    { role: "Discipleship Coordinator", name: "Olive Thayu", image: "/Leadership/2026/discipleship.webp", objectPosition: "50% 5%" },
+    { role: "Secretary", name: "Janice Wakio", image: "/Leadership/2026/sec.webp", objectPosition: "50% 15%" },
+    { role: "Vice Secretary", name: "Gift Okolla", image: "/Leadership/2026/vicesec.webp", objectPosition: "50% 10%" },
+    { role: "Treasurer", name: "Ian Ng'ang'a", image: "/Leadership/2026/treasurer.webp", objectPosition: "50% 15%" },
+    { role: "In-reach Evangelism and Missions' Coordinator", name: "Michael Sakoi", image: "/Leadership/2026/inreach.webp", objectPosition: "50% 0%" },
+    { role: "Out-reach Evangelism and Missions' Coordinator", name: "Chris Onyango", image: "/Leadership/2026/outreach.webp", objectPosition: "50% 15%" },
+    { role: "Bible Study and Training Coordinator", name: "Lilian Wambui", image: "/Leadership/2026/bs.webp", objectPosition: "50% 15%" },
+    { role: "Worship Coordinator", name: "Newton Aggey", image: "/Leadership/2026/worship.webp", objectPosition: "50% 15%" },
+    { role: "Prayer Coordinator", name: "Newton Kirimi", image: "/Leadership/2026/prayer.webp", objectPosition: "50% 15%" },
+    { role: "Creative Ministries Coordinator", name: "Naom OMare", image: "/Leadership/2026/creative.webp", objectPosition: "50% 15%" },
+    { role: "Associates, Advocacy and Partnerships Coordinator (ASAAP)", name: "Joy Gathura", image: "/Leadership/2026/asaap.webp", objectPosition: "50% 15%" },
+    { role: "Tech-Team/ICT Coordinator", name: "Ushindi Mulai", image: "/Leadership/2026/ict.webp", objectPosition: "50% 15%" },
+    { role: "Discipleship Coordinator", name: "Olive Thayu", image: "/Leadership/2026/discipleship.webp", objectPosition: "50% 15%" },
   ]
 }
 
@@ -263,7 +263,7 @@ export default function MinistriesPage() {
                     className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100"
                   >
                     {/* IMAGE */}
-                    <div className="relative h-72 sm:h-80 overflow-hidden bg-gray-100">
+                    <div className="relative h-96 sm:h-80 overflow-hidden bg-gray-100">
                       <img
                         src={leader.image}
                         alt={leader.name}
