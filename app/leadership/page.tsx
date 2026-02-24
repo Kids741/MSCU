@@ -207,11 +207,11 @@ export default function MinistriesPage() {
                 className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100"
               >
                 {/* IMAGE */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 sm:h-72 overflow-hidden bg-gray-100">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition" />
