@@ -1,4 +1,6 @@
+import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ArrowLeft, Calendar } from "lucide-react"
@@ -54,6 +56,49 @@ async function getPost(slug: string) {
   }
 
   return null
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const post = await getPost(slug)
+
+  if (!post) {
+    return { title: "Post Not Found" }
+  }
+
+  const title = post.title.rendered.replace(/<[^>]*>/g, "")
+  const excerpt = post.excerpt?.rendered
+    ?.replace(/<[^>]*>/g, "")
+    ?.slice(0, 160)
+    ?.trim()
+  const image = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url
+
+  return {
+    title,
+    description: excerpt || `Read "${title}" on the MSCU blog.`,
+    alternates: {
+      canonical: `https://medicalschoolcu.org/blog/${encodeURIComponent(slug)}`,
+    },
+    openGraph: {
+      title,
+      description: excerpt || `Read "${title}" on the MSCU blog.`,
+      url: `https://medicalschoolcu.org/blog/${encodeURIComponent(slug)}`,
+      type: "article",
+      publishedTime: post.date,
+      modifiedTime: post.modified,
+      ...(image && { images: [{ url: image }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: excerpt || `Read "${title}" on the MSCU blog.`,
+      ...(image && { images: [image] }),
+    },
+  }
 }
 
 export default async function PostPage({
@@ -125,12 +170,16 @@ export default async function PostPage({
         {/* Content */}
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
           {image && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={image}
-              alt=""
-              className="w-full rounded-2xl mb-10 shadow-lg object-cover max-h-[480px]"
-            />
+            <div className="relative w-full aspect-video max-h-[480px] mb-10 rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src={image}
+                alt={post.title.rendered.replace(/<[^>]*>/g, "")}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+            </div>
           )}
 
           <div

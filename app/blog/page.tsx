@@ -1,7 +1,22 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { BookOpen, Calendar, ArrowRight } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Blog - Stories & Devotionals",
+  description:
+    "Stories, devotionals, and reflections from the MSCU community of faith-driven medical students at the University of Nairobi.",
+  alternates: { canonical: "https://medicalschoolcu.org/blog" },
+  openGraph: {
+    title: "MSCU Blog - Stories & Devotionals",
+    description:
+      "Stories, devotionals, and reflections from our community of faith-driven medical students.",
+    url: "https://medicalschoolcu.org/blog",
+    type: "website",
+  },
+}
 
 function normalizeSlug(raw: string) {
   try {

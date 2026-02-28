@@ -53,11 +53,10 @@ export default function Carousel({ images }: CarouselProps) {
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
+              sizes="100vw"
               className="object-cover"
               priority={index === 0}
-              quality={100}
-              unoptimized
+              quality={80}
             />
           </div>
         ))}
