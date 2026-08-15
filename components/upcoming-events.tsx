@@ -19,7 +19,7 @@ export default async function UpcomingEvents() {
   const events = sortForPreview(allEvents).slice(0, PREVIEW_COUNT)
 
   return (
-    <section id="events" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
+    <section id="events" className="scroll-mt-24 py-16 md:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#F5F5F5" }}>
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center" style={{ color: "#1E88E5" }}>
           Upcoming Events

@@ -34,14 +34,14 @@ export default function Navbar() {
           <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">
             Blog
           </Link>
+          <Link href="/#events" className="text-gray-700 hover:text-blue-600 transition">
+            Upcoming Events
+          </Link>
           <Link href="/#resources" className="text-gray-700 hover:text-blue-600 transition">
             Resources
           </Link>
           <Link href="/#photo-gallery" className="text-gray-700 hover:text-blue-600 transition">
             Photo Gallery
-          </Link>
-          <Link href="/#events" className="text-gray-700 hover:text-blue-600 transition">
-            Upcoming Events
           </Link>
           <Link
             href="/contact"
