@@ -22,23 +22,20 @@ export default function ThemeOfYear() {
 
         {/* Theme Statement (Most Important) */}
         <p className="text-lg md:text-xl font-semibold text-center text-gray-800 mb-8">
-          Reconciled to God, Ambassadors for Christ
+          Rooted in Christ, Abounding in Fruit
         </p>
 
         {/* Scripture */}
         <blockquote className="text-center max-w-3xl mx-auto">
           <p className="text-lg italic text-gray-700 leading-relaxed mb-4">
-            "...All this is from God, who reconciled us to himself through Christ
-            and gave us the ministry of reconciliation... We are therefore
-            Christ’s ambassadors, as though God were making his appeal through
-            us..."
+            "...So we have continued praying for you ever since we first heard about you. We ask God to give you a complete understanding of what he wants to do in your lives, and we ask him to make you wise with spiritual wisdom. And we pray this in order that you may live a life worthy of the Lord and may please him in every way: bearing fruit in every good work, growing in the knowledge of God..."
           </p>
 
           <footer
             className="text-base font-semibold"
             style={{ color: "#1E88E5" }}
           >
-            2 Corinthians 5:17–21 (NIV)
+            Colossians 1:10-12 (NIV)
           </footer>
         </blockquote>
       </div>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "rwRMVmS4A9",
+    "title": "Prayer Half Kesha",
+    "location": "KNH Mess",
+    "color": "#8E24AA",
+    "displayDate": "2nd October 2026",
+    "eventDate": "2026-10-02",
+    "createdAt": "2026-08-15T15:13:13.846Z"
+  },
+  {
+    "id": "toBRKHGJCr",
+    "title": "IBS Sunday",
+    "location": "KNH Mess",
+    "color": "#8E24AA",
+    "displayDate": "27th September 2026",
+    "eventDate": "2026-09-27",
+    "createdAt": "2026-08-15T15:12:28.380Z"
+  },
+  {
+    "id": "4EYJulNGhE",
+    "title": "First Years Orientation",
+    "location": "Chiromo Campus",
+    "color": "#FB8C00",
+    "displayDate": "24th August 2026",
+    "eventDate": "2026-08-24",
+    "createdAt": "2026-08-15T15:10:18.212Z"
+  },
+  {
+    "id": "dZUn-X9mYV",
+    "title": "Union Prayer Day",
+    "location": "Room 400 Soweto, Ufungamano House, Riverside Chiromo",
+    "color": "#43A047",
+    "displayDate": "Every Monday, 5:00pm",
+    "eventDate": null,
+    "createdAt": "2026-08-15T15:09:08.943Z"
+  },
+  {
+    "id": "FoRJxTAJMQ",
+    "title": "Bible Study Fellowship",
+    "location": "Halls of Residence",
+    "color": "#1E88E5",
+    "displayDate": "Every Thursday, 7pm",
+    "eventDate": null,
+    "createdAt": "2026-08-15T15:05:58.669Z"
+  }
+]
