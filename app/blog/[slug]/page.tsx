@@ -75,7 +75,18 @@ export async function generateMetadata({
     ?.replace(/<[^>]*>/g, "")
     ?.slice(0, 160)
     ?.trim()
-  const image = post._embedded?.["wp:featuredmedia"]?.[0]?.source_url
+
+  const media = post._embedded?.["wp:featuredmedia"]?.[0]
+  let image: string | undefined = media?.source_url
+  let imageWidth: number | undefined = media?.media_details?.width
+  let imageHeight: number | undefined = media?.media_details?.height
+
+  // No Featured Image set on the post — fall back to the first image found
+  // in the post body so a share preview still has something to show.
+  if (!image) {
+    const match = post.content?.rendered?.match(/<img[^>]+src=["']([^"']+)["']/i)
+    if (match) image = match[1]
+  }
 
   return {
     title,
@@ -90,7 +101,15 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.date,
       modifiedTime: post.modified,
-      ...(image && { images: [{ url: image }] }),
+      ...(image && {
+        images: [
+          {
+            url: image,
+            ...(imageWidth && imageHeight ? { width: imageWidth, height: imageHeight } : {}),
+            alt: title,
+          },
+        ],
+      }),
     },
     twitter: {
       card: "summary_large_image",
