@@ -34,6 +34,9 @@ export default function Navbar() {
           <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition">
             Blog
           </Link>
+          <Link href="/#events" className="text-gray-700 hover:text-blue-600 transition">
+            Upcoming Events
+          </Link>
           <Link href="/#resources" className="text-gray-700 hover:text-blue-600 transition">
             Resources
           </Link>
@@ -52,25 +55,29 @@ export default function Navbar() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-white border-b flex flex-col gap-4 p-4 md:hidden">
-            <Link href="/#about" className="text-gray-700">
+            <Link href="/#about" className="text-gray-700" onClick={() => setIsOpen(false)}>
               About
             </Link>
-            <Link href="/leadership" className="text-gray-700">
+            <Link href="/leadership" className="text-gray-700" onClick={() => setIsOpen(false)}>
               Leadership
             </Link>
-            <Link href="/blog" className="text-gray-700">
+            <Link href="/blog" className="text-gray-700" onClick={() => setIsOpen(false)}>
               Blog
             </Link>
-            <Link href="/#resources" className="text-gray-700">
+            <Link href="/#events" className="text-gray-700" onClick={() => setIsOpen(false)}>
+              Upcoming Events
+            </Link>
+            <Link href="/#resources" className="text-gray-700" onClick={() => setIsOpen(false)}>
               Resources
             </Link>
-             <Link href="/#photo-gallery" className="text-gray-700">
+            <Link href="/gallery" className="text-gray-700" onClick={() => setIsOpen(false)}>
               Photo Gallery
             </Link>
             <Link
               href="/contact"
               className="px-6 py-2 rounded-lg text-white text-center"
               style={{ backgroundColor: "#FB8C00" }}
+              onClick={() => setIsOpen(false)}
             >
               Contact
             </Link>
