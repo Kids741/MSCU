@@ -46,7 +46,7 @@ type WPPost = {
 
 async function getPosts(): Promise<WPPost[]> {
   const res = await fetch(
-    "https://public-api.wordpress.com/wp/v2/sites/msculiterature.wordpress.com/posts?_fields=id,slug,date,title.rendered,excerpt.rendered,_links,_embedded&per_page=52&_embed=1",
+    "https://public-api.wordpress.com/wp/v2/sites/msculiterature.wordpress.com/posts?_fields=id,slug,date,title.rendered,excerpt.rendered,_links,_embedded&per_page=25&_embed=1",
     {
       next: { revalidate: 300 },
     }
@@ -93,7 +93,7 @@ export default async function BlogIndexPage() {
               <p className="text-slate-500">Check back soon for new content.</p>
             </div>
           ) : (
-            <div className="grid gap-8 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-3">
               {posts.map((post, i) => {
                 const media = post._embedded?.["wp:featuredmedia"]?.[0]
                 const image = media?.source_url

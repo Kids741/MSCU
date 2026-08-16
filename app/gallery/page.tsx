@@ -52,7 +52,7 @@ export default async function GalleryIndexPage() {
               <p className="text-slate-500">Check back soon for new photos.</p>
             </div>
           ) : (
-            <div className="grid gap-8 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-3">
               {galleries.map((g) => (
                 <a
                   key={g.id}
