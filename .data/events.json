@@ -1,12 +1,93 @@
 [
   {
-    "id": "rwRMVmS4A9",
+    "id": "k6V2HRlX8y",
+    "title": "Bereans Night",
+    "location": "KNH Mess",
+    "color": "#041f5c",
+    "displayDate": "11th December 2026",
+    "eventDate": "2026-12-11",
+    "createdAt": "2026-08-16T12:21:00.412Z"
+  },
+  {
+    "id": "UOc17Cxazd",
+    "title": "JCC Sunday",
+    "location": "TBC",
+    "color": "#FFD700",
+    "displayDate": "6th December 2026",
+    "eventDate": "2026-12-06",
+    "createdAt": "2026-08-16T12:20:23.164Z"
+  },
+  {
+    "id": "cm4ELTKimc",
     "title": "Prayer Half Kesha",
     "location": "KNH Mess",
     "color": "#8E24AA",
+    "displayDate": "4th December 2026",
+    "eventDate": "2026-12-04",
+    "createdAt": "2026-08-16T12:19:45.943Z"
+  },
+  {
+    "id": "5gdgTZqbVK",
+    "title": "Compassion Sunday",
+    "location": "KNH Mess",
+    "color": "#FB8C00",
+    "displayDate": "29th November 2026",
+    "eventDate": "2026-11-29",
+    "createdAt": "2026-08-16T12:19:10.026Z"
+  },
+  {
+    "id": "qQOUPrbJlA",
+    "title": "Worship Night",
+    "location": "KNH Mess",
+    "color": "#43A047",
+    "displayDate": "27th November 2026",
+    "eventDate": "2026-11-27",
+    "createdAt": "2026-08-16T12:18:35.877Z"
+  },
+  {
+    "id": "laYOmqdKwJ",
+    "title": "Associates Sunday",
+    "location": "Lecture Theatre 3",
+    "color": "#E53935",
+    "displayDate": "22nd November 2026",
+    "eventDate": "2026-11-22",
+    "createdAt": "2026-08-16T12:17:36.441Z"
+  },
+  {
+    "id": "LQr0yNMwiG",
+    "title": "Garlands Sunday",
+    "location": "KNH Mess",
+    "color": "#F48FB1",
+    "displayDate": "8th November 2026",
+    "eventDate": "2026-11-08",
+    "createdAt": "2026-08-16T12:16:50.614Z"
+  },
+  {
+    "id": "jmXMQXiIwt",
+    "title": "Prayer Half Kesha",
+    "location": "KNH Mess",
+    "color": "#FFD700",
     "displayDate": "2nd October 2026",
     "eventDate": "2026-10-02",
-    "createdAt": "2026-08-15T15:13:13.846Z"
+    "createdAt": "2026-08-16T12:14:59.011Z"
+  },
+  {
+    "id": "NZviytfs9E",
+    "title": "Adams Retreat 2026",
+    "location": "FOCUS Centre Kasarani",
+    "color": "#041f5c",
+    "displayDate": "30th October to 1st November 2026",
+    "eventDate": "2026-10-30",
+    "createdAt": "2026-08-16T12:13:58.793Z"
+  },
+  {
+    "id": "nIGoWWPAXw",
+    "title": "Cultural Sunday 2026",
+    "location": "KNH Mess",
+    "color": "#1E88E5",
+    "displayDate": "11th October 2026",
+    "eventDate": "2026-10-11",
+    "createdAt": "2026-08-16T12:10:01.975Z"
   },
   {
     "id": "toBRKHGJCr",

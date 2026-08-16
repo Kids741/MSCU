@@ -21,6 +21,9 @@ const COLOR_OPTIONS = [
   { label: "Orange", value: "#FB8C00" },
   { label: "Purple", value: "#8E24AA" },
   { label: "Red", value: "#E53935" },
+  { label: "Gold", value: "#FFD700" },
+  { label: "Deep Blue", value: "#041f5c" },
+  { label: "Pink", value: "#F48FB1" },
 ]
 
 export default function EventsAdminPage() {
