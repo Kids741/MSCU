@@ -1,9 +1,9 @@
 import "server-only"
-import fs from "fs"
-import path from "path"
+import { kv } from "@vercel/kv"
+import { put, del } from "@vercel/blob"
 
-const DATA_DIR = path.join(process.cwd(), ".data")
-const GALLERIES_FILE = path.join(DATA_DIR, "galleries.json")
+const INDEX_KEY = "galleries:index" // sorted set — score: createdAt (ms), member: gallery id
+const RECORD_PREFIX = "gallery:"
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
 const MAX_AGE_DAYS = 365
@@ -13,27 +13,8 @@ export type Gallery = {
   title: string
   description: string
   albumUrl: string // public Google Photos shared-album link
-  coverImage: string | null // relative path under public/gallery-images, or null if none could be fetched
+  coverImage: string | null // full public Vercel Blob URL, or null if none was fetched
   createdAt: string
-}
-
-function ensureFile<T>(file: string, fallback: T) {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true })
-  if (!fs.existsSync(file)) fs.writeFileSync(file, JSON.stringify(fallback, null, 2))
-}
-
-function readJson<T>(file: string, fallback: T): T {
-  ensureFile(file, fallback)
-  try {
-    return JSON.parse(fs.readFileSync(file, "utf-8"))
-  } catch {
-    return fallback
-  }
-}
-
-function writeJson<T>(file: string, data: T) {
-  ensureFile(file, data)
-  fs.writeFileSync(file, JSON.stringify(data, null, 2))
 }
 
 function isExpired(gallery: Gallery): boolean {
@@ -42,41 +23,57 @@ function isExpired(gallery: Gallery): boolean {
   return Date.now() > createdTime + MAX_AGE_DAYS * ONE_DAY_MS
 }
 
-// Reads galleries and prunes any added more than a year ago, persisting
-// the cleanup so the JSON file (and the cover images on disk) don't grow
-// forever. Cover images for pruned galleries are also deleted.
-export function getGalleries(): Gallery[] {
-  const all = readJson<Gallery[]>(GALLERIES_FILE, [])
-  const active = all.filter((g) => !isExpired(g))
+// Reads galleries (newest first) and prunes any added more than a year ago,
+// deleting both the KV record and its cover image from Blob storage.
+export async function getGalleries(): Promise<Gallery[]> {
+  const ids = await kv.zrange<string[]>(INDEX_KEY, 0, -1, { rev: true })
+  if (!ids || ids.length === 0) return []
 
-  if (active.length !== all.length) {
-    const removed = all.filter((g) => isExpired(g))
-    for (const gallery of removed) {
-      const galleryDir = path.join(process.cwd(), "public", "gallery-images", gallery.id)
-      fs.rmSync(galleryDir, { recursive: true, force: true })
+  const raw = await kv.mget<Array<Gallery | null>>(...ids.map((id) => `${RECORD_PREFIX}${id}`))
+  const all = raw.filter((g): g is Gallery => g !== null)
+
+  const active: Gallery[] = []
+  for (const gallery of all) {
+    if (isExpired(gallery)) {
+      await kv.del(`${RECORD_PREFIX}${gallery.id}`)
+      await kv.zrem(INDEX_KEY, gallery.id)
+      if (gallery.coverImage) await del(gallery.coverImage).catch(() => {})
+    } else {
+      active.push(gallery)
     }
-    writeJson(GALLERIES_FILE, active)
   }
-
   return active
 }
 
-export function getGallery(id: string): Gallery | null {
-  return getGalleries().find((g) => g.id === id) ?? null
+export async function getGallery(id: string): Promise<Gallery | null> {
+  const gallery = await kv.get<Gallery>(`${RECORD_PREFIX}${id}`)
+  if (!gallery) return null
+  return isExpired(gallery) ? null : gallery
 }
 
-export function upsertGallery(gallery: Gallery): Gallery {
-  const galleries = readJson<Gallery[]>(GALLERIES_FILE, [])
-  const idx = galleries.findIndex((g) => g.id === gallery.id)
-  if (idx >= 0) galleries[idx] = gallery
-  else galleries.unshift(gallery)
-  writeJson(GALLERIES_FILE, galleries)
+export async function upsertGallery(gallery: Gallery): Promise<Gallery> {
+  await kv.set(`${RECORD_PREFIX}${gallery.id}`, gallery)
+  await kv.zadd(INDEX_KEY, { score: new Date(gallery.createdAt).getTime(), member: gallery.id })
   return gallery
 }
 
-export function deleteGalleryRecord(id: string) {
-  writeJson(
-    GALLERIES_FILE,
-    readJson<Gallery[]>(GALLERIES_FILE, []).filter((g) => g.id !== id)
-  )
+export async function deleteGalleryRecord(id: string) {
+  const existing = await getGallery(id)
+  await kv.del(`${RECORD_PREFIX}${id}`)
+  await kv.zrem(INDEX_KEY, id)
+  if (existing?.coverImage) await del(existing.coverImage).catch(() => {})
+}
+
+// Uploads a cover image's bytes to Vercel Blob and returns its public URL.
+export async function uploadCoverImage(
+  galleryId: string,
+  bytes: Buffer,
+  contentType: string,
+  ext: string
+): Promise<string> {
+  const blob = await put(`gallery-images/${galleryId}/cover.${ext}`, bytes, {
+    access: "public",
+    contentType,
+  })
+  return blob.url
 }

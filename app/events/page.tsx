@@ -22,7 +22,7 @@ function sortEvents(events: EventItem[]): EventItem[] {
 }
 
 export default async function EventsPage() {
-  const events = sortEvents(getEvents())
+  const events = sortEvents(await getEvents())
 
   return (
     <>

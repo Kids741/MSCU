@@ -3,7 +3,7 @@ import { nanoid } from "nanoid"
 import { getEvents, upsertEvent, type EventItem } from "@/lib/events-store"
 
 export async function GET() {
-  return NextResponse.json(getEvents())
+  return NextResponse.json(await getEvents())
 }
 
 // Body: { title, location, color, displayDate, eventDate?: "YYYY-MM-DD" | null }
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
     }
 
-    upsertEvent(event)
+    await upsertEvent(event)
     return NextResponse.json(event, { status: 201 })
   } catch (err: any) {
     console.error(err)

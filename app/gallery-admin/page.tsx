@@ -141,11 +141,7 @@ export default function GalleryAdminPage() {
                   <div className="w-16 h-16 rounded-lg overflow-hidden bg-slate-100 shrink-0">
                     {g.coverImage ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={`/gallery-images/${g.coverImage}`}
-                        alt={g.title}
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={g.coverImage} alt={g.title} className="w-full h-full object-cover" />
                     ) : null}
                   </div>
                   <div className="min-w-0 flex-1">
