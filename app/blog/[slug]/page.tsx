@@ -4,6 +4,9 @@ import Image from "next/image"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ArrowLeft, Calendar } from "lucide-react"
+import { getLikeCount } from "@/lib/likes-store"
+import LikeButton from "@/components/like-button"
+import CommentSection from "@/components/comment-section"
 
 function buildSlugVariants(raw: string) {
   const variants = new Set<string>()
@@ -81,8 +84,6 @@ export async function generateMetadata({
   let imageWidth: number | undefined = media?.media_details?.width
   let imageHeight: number | undefined = media?.media_details?.height
 
-  // No Featured Image set on the post — fall back to the first image found
-  // in the post body so a share preview still has something to show.
   if (!image) {
     const match = post.content?.rendered?.match(/<img[^>]+src=["']([^"']+)["']/i)
     if (match) image = match[1]
@@ -157,6 +158,8 @@ export default async function PostPage({
       })
     : null
 
+  const likeCount = await getLikeCount(post.slug)
+
   return (
     <>
       <Navbar />
@@ -210,8 +213,16 @@ export default async function PostPage({
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
+          {/* Like button */}
+          <div className="mt-10">
+            <LikeButton slug={post.slug} initialCount={likeCount} />
+          </div>
+
+          {/* Comments */}
+          <CommentSection slug={post.slug} />
+
           {/* Bottom nav */}
-          <div className="mt-14 pt-8 border-t border-slate-200">
+          <div className="mt-10">
             <Link
               href="/blog"
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
