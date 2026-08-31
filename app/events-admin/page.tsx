@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { CalendarPlus, Trash2 } from "lucide-react"
+import AdminLogoutButton from "@/components/admin-logout-button"
 
 type EventItem = {
   id: string
@@ -231,6 +232,7 @@ export default function EventsAdminPage() {
             </div>
           )}
         </div>
+        <AdminLogoutButton />
       </main>
       <Footer />
     </>

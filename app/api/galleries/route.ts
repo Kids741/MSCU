@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { nanoid } from "nanoid"
 import { getGalleries, upsertGallery, uploadCoverImage, type Gallery } from "@/lib/gallery-store"
 import { fetchAlbumPreview, downloadImage } from "@/lib/album-link"
+import { isAdminAuthenticated } from "@/lib/require-admin"
 
 function extFor(contentType: string) {
   if (contentType.includes("png")) return "png"
@@ -9,15 +10,17 @@ function extFor(contentType: string) {
   return "jpg"
 }
 
+// Public — anyone can view the gallery list.
 export async function GET() {
   return NextResponse.json(await getGalleries())
 }
 
-// Body: { title, description?, albumUrl }
-// Fetches the album link's Open Graph cover image (if any), uploads it to
-// Blob Storage, and saves a gallery record that links out to the original
-// album — no photos are downloaded beyond that single cover thumbnail.
+// Admin-only — creates a new gallery.
 export async function POST(req: NextRequest) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
   try {
     const { title, description, albumUrl } = await req.json()
 
@@ -49,7 +52,6 @@ export async function POST(req: NextRequest) {
         coverImage = await uploadCoverImage(galleryId, bytes, contentType, extFor(contentType))
       }
     } catch (err) {
-      // Cover fetch is a nice-to-have, not a hard requirement.
       console.warn("Could not fetch album cover:", err)
     }
 

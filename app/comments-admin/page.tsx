@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { MessageSquareText, Trash2 } from "lucide-react"
+import AdminLogoutButton from "@/components/admin-logout-button"
 
 type Comment = {
   id: string
@@ -81,6 +82,7 @@ export default function CommentsAdminPage() {
           )}
         </div>
       </main>
+      <AdminLogoutButton />
       <Footer />
     </>
   )

@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import { updateComment, deleteComment } from "@/lib/comments-store"
+import { isAdminAuthenticated } from "@/lib/require-admin"
 
-// Body: { text, editToken } — self-service edit, only the original author can do this.
+// Body: { text, editToken } — self-service edit, only the original author.
+// No admin bypass here on purpose: editing someone else's comment on their
+// behalf isn't a capability admins need.
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   try {
@@ -30,16 +33,26 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 }
 
 // Body (optional): { editToken }
-// With a matching editToken => self-service delete by the comment's author.
-// Without one => admin/moderator delete (used by /comments-admin).
+// With a matching editToken => self-service delete by the comment's author, no login needed.
+// Without one => admin/moderator force-delete — this NOW requires a valid
+// admin session. Previously this path had no protection at all, meaning
+// anyone could delete any comment by simply omitting the token — that's
+// fixed here.
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+
   let editToken: string | undefined
   try {
     const body = await req.json()
     editToken = body?.editToken
   } catch {
-    // No body sent — that's the admin case, fine.
+    // No body sent at all — treat as an admin force-delete attempt below.
+  }
+
+  if (!editToken) {
+    if (!(await isAdminAuthenticated())) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
   }
 
   const deleted = await deleteComment(id, editToken)

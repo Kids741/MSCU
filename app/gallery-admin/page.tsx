@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { ImagePlus, Trash2, ExternalLink } from "lucide-react"
+import AdminLogoutButton from "@/components/admin-logout-button"
 
 type Gallery = {
   id: string
@@ -168,6 +169,7 @@ export default function GalleryAdminPage() {
           )}
         </div>
       </main>
+      <AdminLogoutButton />
       <Footer />
     </>
   )
