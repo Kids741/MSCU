@@ -4,8 +4,6 @@ import { getEvents, type EventItem } from "@/lib/events-store"
 
 const PREVIEW_COUNT = 4
 
-// Recurring events (no fixed date) surface first since they're always
-// relevant; one-time events follow, soonest first.
 function sortForPreview(events: EventItem[]): EventItem[] {
   const recurring = events.filter((e) => !e.eventDate)
   const dated = events
@@ -15,7 +13,7 @@ function sortForPreview(events: EventItem[]): EventItem[] {
 }
 
 export default async function UpcomingEvents() {
-  const allEvents = getEvents()
+  const allEvents = await getEvents()
   const events = sortForPreview(allEvents).slice(0, PREVIEW_COUNT)
 
   return (

@@ -103,7 +103,7 @@ export default async function BlogIndexPage() {
                   <article
                     key={post.id}
                     className={`group relative bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
-                      i === 0 ? "md:col-span-2" : ""
+                      i === 0 ? "md:col-span-3" : ""
                     }`}
                   >
                     <Link href={`/blog/${normalizeSlug(post.slug)}`}>

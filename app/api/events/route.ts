@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from "next/server"
 import { nanoid } from "nanoid"
 import { getEvents, upsertEvent, type EventItem } from "@/lib/events-store"
+import { isAdminAuthenticated } from "@/lib/require-admin"
 
+// Public — event data isn't sensitive, and this is also duplicative of
+// what's already shown on /events, so no auth required to list.
 export async function GET() {
-  return NextResponse.json(getEvents())
+  return NextResponse.json(await getEvents())
 }
 
-// Body: { title, location, color, displayDate, eventDate?: "YYYY-MM-DD" | null }
+// Admin-only.
 export async function POST(req: NextRequest) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
   try {
     const { title, location, color, displayDate, eventDate } = await req.json()
 
@@ -32,7 +39,7 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
     }
 
-    upsertEvent(event)
+    await upsertEvent(event)
     return NextResponse.json(event, { status: 201 })
   } catch (err: any) {
     console.error(err)

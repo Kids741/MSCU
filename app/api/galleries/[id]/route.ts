@@ -1,22 +1,24 @@
 import { NextRequest, NextResponse } from "next/server"
-import fs from "fs"
-import path from "path"
 import { getGallery, deleteGalleryRecord } from "@/lib/gallery-store"
+import { isAdminAuthenticated } from "@/lib/require-admin"
 
-const IMAGES_DIR = path.join(process.cwd(), "public", "gallery-images")
-
+// Public.
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const gallery = getGallery(id)
+  const gallery = await getGallery(id)
   if (!gallery) return NextResponse.json({ error: "Not found" }, { status: 404 })
   return NextResponse.json(gallery)
 }
 
+// Admin-only.
 export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  if (!(await isAdminAuthenticated())) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+  }
+
   const { id } = await params
-  const gallery = getGallery(id)
+  const gallery = await getGallery(id)
   if (!gallery) return NextResponse.json({ error: "Not found" }, { status: 404 })
-  fs.rmSync(path.join(IMAGES_DIR, gallery.id), { recursive: true, force: true })
-  deleteGalleryRecord(gallery.id)
+  await deleteGalleryRecord(id)
   return new NextResponse(null, { status: 204 })
 }

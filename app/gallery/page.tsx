@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   },
 }
 
-// Galleries are added through /gallery-admin, so always read the latest list.
 export const dynamic = "force-dynamic"
 
 function formatDate(iso: string) {
@@ -26,14 +25,14 @@ function formatDate(iso: string) {
 }
 
 export default async function GalleryIndexPage() {
-  const galleries = getGalleries()
+  const galleries = await getGalleries()
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         <section className="bg-blue-600 text-white py-16 md:py-24">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex justify-center mb-4">
               <Camera className="w-12 h-12 opacity-80" />
             </div>
@@ -44,7 +43,7 @@ export default async function GalleryIndexPage() {
           </div>
         </section>
 
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           {!galleries.length ? (
             <div className="text-center py-20">
               <Images className="w-16 h-16 mx-auto text-slate-300 mb-4" />
@@ -52,7 +51,7 @@ export default async function GalleryIndexPage() {
               <p className="text-slate-500">Check back soon for new photos.</p>
             </div>
           ) : (
-            <div className="grid gap-8 sm:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {galleries.map((g) => (
                 <a
                   key={g.id}
@@ -64,10 +63,10 @@ export default async function GalleryIndexPage() {
                   <div className="relative w-full aspect-[4/3] bg-slate-100">
                     {g.coverImage ? (
                       <Image
-                        src={`/gallery-images/${g.coverImage}`}
+                        src={g.coverImage}
                         alt={`${g.title} — album cover`}
                         fill
-                        sizes="(min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
@@ -78,25 +77,25 @@ export default async function GalleryIndexPage() {
                     <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600" />
                   </div>
 
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-2 text-sm text-slate-400 mb-3">
-                      <Calendar className="w-4 h-4" />
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 text-xs text-slate-400 mb-2">
+                      <Calendar className="w-3.5 h-3.5" />
                       <time dateTime={g.createdAt}>{formatDate(g.createdAt)}</time>
                     </div>
 
-                    <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors">
+                    <h2 className="text-lg font-bold text-slate-800 mb-2 line-clamp-1 group-hover:text-blue-600 transition-colors">
                       {g.title}
                     </h2>
 
                     {g.description ? (
-                      <p className="text-slate-600 leading-relaxed line-clamp-2 mb-5">{g.description}</p>
+                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-2 mb-4">{g.description}</p>
                     ) : (
-                      <div className="mb-5" />
+                      <div className="mb-4" />
                     )}
 
-                    <span className="inline-flex items-center gap-2 text-blue-600 group-hover:text-blue-700 font-semibold text-sm">
+                    <span className="inline-flex items-center gap-1.5 text-blue-600 group-hover:text-blue-700 font-semibold text-xs">
                       View album
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </span>
                   </div>
                 </a>

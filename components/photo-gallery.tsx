@@ -3,14 +3,12 @@ import Link from "next/link"
 import { ArrowRight, ExternalLink, Images } from "lucide-react"
 import { getGalleries } from "@/lib/gallery-store"
 
-// How many recent galleries to preview on the homepage.
-const PREVIEW_COUNT = 3
+const PREVIEW_COUNT = 4
 
 export default async function PhotoGallery() {
-  const allGalleries = getGalleries()
+  const allGalleries = await getGalleries()
   const galleries = allGalleries.slice(0, PREVIEW_COUNT)
 
-  // Nothing added yet — skip the section rather than showing an empty box.
   if (galleries.length === 0) return null
 
   return (
@@ -21,7 +19,7 @@ export default async function PhotoGallery() {
           Glimpses of our community, events, and the meaningful work we do together.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {galleries.map((gallery) => (
             <a
               key={gallery.id}
@@ -33,7 +31,7 @@ export default async function PhotoGallery() {
               <div className="relative w-full aspect-[4/3] bg-slate-100">
                 {gallery.coverImage ? (
                   <Image
-                    src={`/gallery-images/${gallery.coverImage}`}
+                    src={gallery.coverImage}
                     alt={`${gallery.title} — album cover`}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"

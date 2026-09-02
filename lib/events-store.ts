@@ -1,9 +1,12 @@
 import "server-only"
-import fs from "fs"
-import path from "path"
+import { kv } from "@vercel/kv"
+import { readCollection, writeCollection } from "./local-json-store"
 
-const DATA_DIR = path.join(process.cwd(), ".data")
-const EVENTS_FILE = path.join(DATA_DIR, "events.json")
+const USE_LOCAL_KV = !process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN
+
+const COLLECTION = "events"
+const INDEX_KEY = "events:index"
+const RECORD_PREFIX = "event:"
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000
 const GRACE_PERIOD_DAYS = 7
@@ -13,62 +16,68 @@ export type EventItem = {
   title: string
   location: string
   color: string
-  displayDate: string // freeform text shown on the card, e.g. "27th March 2026" or "Every Thursday, 7 PM"
-  eventDate: string | null // ISO date "YYYY-MM-DD" for one-time events. Leave null for recurring events, which never auto-expire.
+  displayDate: string
+  eventDate: string | null
   createdAt: string
 }
 
-function ensureFile<T>(file: string, fallback: T) {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true })
-  if (!fs.existsSync(file)) fs.writeFileSync(file, JSON.stringify(fallback, null, 2))
-}
-
-function readJson<T>(file: string, fallback: T): T {
-  ensureFile(file, fallback)
-  try {
-    return JSON.parse(fs.readFileSync(file, "utf-8"))
-  } catch {
-    return fallback
-  }
-}
-
-function writeJson<T>(file: string, data: T) {
-  ensureFile(file, data)
-  fs.writeFileSync(file, JSON.stringify(data, null, 2))
-}
-
 function isExpired(event: EventItem): boolean {
-  if (!event.eventDate) return false // recurring events never expire
+  if (!event.eventDate) return false
   const eventTime = new Date(`${event.eventDate}T00:00:00`).getTime()
   if (Number.isNaN(eventTime)) return false
-  const hideAfter = eventTime + GRACE_PERIOD_DAYS * ONE_DAY_MS
-  return Date.now() > hideAfter
+  return Date.now() > eventTime + GRACE_PERIOD_DAYS * ONE_DAY_MS
 }
 
-// Reads events and prunes any that are more than 7 days past their date,
-// persisting the cleanup so the JSON file doesn't grow forever.
-export function getEvents(): EventItem[] {
-  const all = readJson<EventItem[]>(EVENTS_FILE, [])
-  const active = all.filter((e) => !isExpired(e))
-  if (active.length !== all.length) {
-    writeJson(EVENTS_FILE, active)
+export async function getEvents(): Promise<EventItem[]> {
+  let all: EventItem[]
+
+  if (USE_LOCAL_KV) {
+    all = readCollection<EventItem>(COLLECTION)
+  } else {
+    const ids = await kv.zrange<string[]>(INDEX_KEY, 0, -1)
+    if (!ids || ids.length === 0) return []
+    const raw = await kv.mget<Array<EventItem | null>>(...ids.map((id) => `${RECORD_PREFIX}${id}`))
+    all = raw.filter((e): e is EventItem => e !== null)
   }
+
+  const active: EventItem[] = []
+  let prunedAny = false
+
+  for (const event of all) {
+    if (isExpired(event)) {
+      prunedAny = true
+      if (!USE_LOCAL_KV) {
+        await kv.del(`${RECORD_PREFIX}${event.id}`)
+        await kv.zrem(INDEX_KEY, event.id)
+      }
+    } else {
+      active.push(event)
+    }
+  }
+
+  if (USE_LOCAL_KV && prunedAny) writeCollection(COLLECTION, active)
   return active
 }
 
-export function upsertEvent(event: EventItem): EventItem {
-  const events = readJson<EventItem[]>(EVENTS_FILE, [])
-  const idx = events.findIndex((e) => e.id === event.id)
-  if (idx >= 0) events[idx] = event
-  else events.unshift(event)
-  writeJson(EVENTS_FILE, events)
+export async function upsertEvent(event: EventItem): Promise<EventItem> {
+  if (USE_LOCAL_KV) {
+    const all = readCollection<EventItem>(COLLECTION)
+    const idx = all.findIndex((e) => e.id === event.id)
+    if (idx >= 0) all[idx] = event
+    else all.unshift(event)
+    writeCollection(COLLECTION, all)
+    return event
+  }
+  await kv.set(`${RECORD_PREFIX}${event.id}`, event)
+  await kv.zadd(INDEX_KEY, { score: new Date(event.createdAt).getTime(), member: event.id })
   return event
 }
 
-export function deleteEvent(id: string) {
-  const events = readJson<EventItem[]>(EVENTS_FILE, [])
-  writeJson(
-    EVENTS_FILE,
-    events.filter((e) => e.id !== id)
-  )
+export async function deleteEvent(id: string) {
+  if (USE_LOCAL_KV) {
+    writeCollection(COLLECTION, readCollection<EventItem>(COLLECTION).filter((e) => e.id !== id))
+    return
+  }
+  await kv.del(`${RECORD_PREFIX}${id}`)
+  await kv.zrem(INDEX_KEY, id)
 }
