@@ -12,11 +12,10 @@ export type CommitteeMember = {
 }
 
 export const compassionCommittee: CommitteeMember[] = [
-  { name: "Joy Chege", role: "Compassion & Care Committee", phone: "254782137094", image: "/Leadership/2026/vp1.webp" },
-  { name: "Alphonceberry Otieno", role: "Compassion & Care Committee", phone: "254717024672" },
-  { name: "Donata Kut", role: "Compassion & Care Committee", phone: "254726809779" },
+  { name: "Joy Chege", role: "Compassion & Care Committee", phone: "254782137094", image: "/Compassion/committee/joy-chege.webp" },
+  { name: "Alphonceberry Otieno", role: "Compassion & Care Committee", phone: "254717024672", image: "/Compassion/committee/alphonceberry-otieno.webp" },
   { name: "Brian Chege", role: "Compassion & Care Committee", phone: "254796693660", image: "/Compassion/committee/brian-chege.webp" },
-  { name: "Kevin Otieno", role: "Compassion & Care Committee", phone: "254782128332" },
-  { name: "Liz", role: "Compassion & Care Committee", phone: "254790418539" },
+  { name: "Kevin Otieno", role: "Compassion & Care Committee", phone: "254782128332", image: "/Compassion/committee/kevin-otieno.webp" },
+  { name: "Liz", role: "Compassion & Care Committee", phone: "254790418539", image: "/Compassion/committee/liz.webp" },
   { name: "Brenda Wanyama", role: "Compassion & Care Committee", phone: "254745730449", image: "/Compassion/committee/brenda-wanyama.webp" },
 ]
