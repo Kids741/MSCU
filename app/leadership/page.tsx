@@ -4,6 +4,7 @@ import { useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import Script from "next/script"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 import {
@@ -31,7 +32,7 @@ import type { Icon } from "phosphor-react"
 
 /* ---------------- MINISTRIES ---------------- */
 
-const ministries: { title: string; icon: Icon; description: string }[] = [
+const ministries: { title: string; icon: Icon; description: string; href?: string }[] = [
   {
     title: "Sisters Ministry",
     icon: FlowerLotus,
@@ -49,6 +50,7 @@ const ministries: { title: string; icon: Icon; description: string }[] = [
     icon: Heart,
     description:
       "The compassion team offers counselling services, identifies needy members, and organizes compassion outreach.",
+    href: "/compassion",
   },
   {
     title: "Brothers Ministry",
@@ -343,6 +345,16 @@ export default function MinistriesPage() {
                 <p className="text-gray-700 leading-relaxed">
                   {ministry.description}
                 </p>
+
+                {ministry.href && (
+                  <Link
+                    href={ministry.href}
+                    className="inline-block mt-4 font-semibold hover:underline"
+                    style={{ color: "#1E88E5" }}
+                  >
+                    Visit the ministry page &rarr;
+                  </Link>
+                )}
               </motion.div>
             )
           })}

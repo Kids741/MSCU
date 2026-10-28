@@ -37,6 +37,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/compassion" className="text-gray-100 hover:text-white transition">
+                  Compassion Ministry
+                </Link>
+              </li>
+              <li>
                 <Link href="/#events" className="text-gray-100 hover:text-white transition">
                   Events
                 </Link>
