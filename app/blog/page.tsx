@@ -6,14 +6,14 @@ import Footer from "@/components/footer"
 import { BookOpen, Calendar, ArrowRight, Images } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Blog - Stories & Devotionals",
+  title: "Poiema",
   description:
-    "Stories, devotionals, and reflections from the MSCU community of faith-driven medical students at the University of Nairobi.",
+    "Renewing The Mind, One Word at a Time",
   alternates: { canonical: "https://medicalschoolcu.org/blog" },
   openGraph: {
-    title: "MSCU Blog - Stories & Devotionals",
+    title: "Poiema",
     description:
-      "Stories, devotionals, and reflections from our community of faith-driven medical students.",
+      "Renewing The Mind, One Word at a Time",
     url: "https://medicalschoolcu.org/blog",
     type: "website",
   },
@@ -73,11 +73,13 @@ export default async function BlogIndexPage() {
               <BookOpen className="w-12 h-12 opacity-80" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              MSCU Blog
+              Poiema
             </h1>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+              <i>God's Handiwork</i>
+            </h2>    
             <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-              Stories, devotionals, and reflections from our community of
-              faith-driven medical students.
+              Renewing The Mind, One Word at a Time
             </p>
           </div>
         </section>
