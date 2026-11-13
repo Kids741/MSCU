@@ -154,7 +154,7 @@ export default function EventsAdminPage() {
                 className="w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <p className="text-xs text-slate-400 mt-1.5">
-                This exact text is what visitors see — write it however you'd like it displayed.
+                This exact text is what visitors see — write it however you&apos;d like it displayed.
               </p>
             </div>
 
