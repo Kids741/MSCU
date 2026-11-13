@@ -1,9 +1,11 @@
 import type { Metadata } from "next"
-import Link from "next/link"
-import Image from "next/image"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import { BookOpen, Calendar, ArrowRight, Images } from "lucide-react"
+import BlogSearch from "@/components/blog-search"
+import BlogPostCard from "@/components/blog-post-card"
+import BlogLoadMore from "@/components/blog-load-more"
+import { fetchPosts, FIRST_BATCH_SIZE } from "@/lib/blog-posts"
+import { BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Blog - Stories & Devotionals",
@@ -19,55 +21,20 @@ export const metadata: Metadata = {
   },
 }
 
-function normalizeSlug(raw: string) {
-  try {
-    return encodeURIComponent(decodeURIComponent(raw))
-  } catch {
-    return encodeURIComponent(raw)
-  }
-}
-
-type WPPost = {
-  id: number
-  slug: string
-  date: string
-  title: { rendered: string }
-  excerpt: { rendered: string }
-  _embedded?: {
-    "wp:featuredmedia"?: [
-      {
-        source_url: string
-        media_details?: { width?: number; height?: number }
-        alt_text?: string
-      }
-    ]
-  }
-}
-
-async function getPosts(): Promise<WPPost[]> {
-  const res = await fetch(
-    "https://public-api.wordpress.com/wp/v2/sites/msculiterature.wordpress.com/posts?_fields=id,slug,date,title.rendered,excerpt.rendered,_links,_embedded&per_page=25&_embed=1",
-    {
-      next: { revalidate: 300 },
-    }
-  )
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch posts")
-  }
-
-  return res.json()
-}
-
 export default async function BlogIndexPage() {
-  const posts = await getPosts()
+  const { posts, total } = await fetchPosts(0, FIRST_BATCH_SIZE)
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Hero banner */}
-        <section className="bg-blue-600 text-white py-16 md:py-24">
+        <section className="relative bg-blue-600 text-white py-16 md:py-24">
+          <div className="absolute inset-x-0 top-0">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 flex justify-end">
+              <BlogSearch />
+            </div>
+          </div>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex justify-center mb-4">
               <BookOpen className="w-12 h-12 opacity-80" />
@@ -93,81 +60,14 @@ export default async function BlogIndexPage() {
               <p className="text-slate-500">Check back soon for new content.</p>
             </div>
           ) : (
-            <div className="grid gap-8 md:grid-cols-3">
-              {posts.map((post, i) => {
-                const media = post._embedded?.["wp:featuredmedia"]?.[0]
-                const image = media?.source_url
-                const title = post.title.rendered.replace(/<[^>]*>/g, "")
-
-                return (
-                  <article
-                    key={post.id}
-                    className={`group relative bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${
-                      i === 0 ? "md:col-span-3" : ""
-                    }`}
-                  >
-                    <Link href={`/blog/${normalizeSlug(post.slug)}`}>
-                      {/* Thumbnail */}
-                      <div
-                        className={`relative w-full bg-slate-100 ${
-                          i === 0 ? "aspect-[21/9]" : "aspect-video"
-                        }`}
-                      >
-                        {image ? (
-                          <Image
-                            src={image}
-                            alt={media?.alt_text || title}
-                            fill
-                            sizes={i === 0 ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-slate-300">
-                            <Images className="w-10 h-10" />
-                          </div>
-                        )}
-                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600" />
-                      </div>
-
-                      <div className="p-6 md:p-8">
-                        {/* Date */}
-                        <div className="flex items-center gap-2 text-sm text-slate-400 mb-3">
-                          <Calendar className="w-4 h-4" />
-                          <time dateTime={post.date}>
-                            {new Date(post.date).toLocaleDateString(undefined, {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}
-                          </time>
-                        </div>
-
-                        {/* Title */}
-                        <h2
-                          className={`font-bold text-slate-800 mb-3 group-hover:text-blue-600 transition-colors ${
-                            i === 0 ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
-                          }`}
-                        >
-                          <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                        </h2>
-
-                        {/* Excerpt */}
-                        <div
-                          className="text-slate-600 leading-relaxed line-clamp-3 mb-5 prose prose-slate prose-sm max-w-none"
-                          dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                        />
-
-                        {/* Read more */}
-                        <span className="inline-flex items-center gap-2 text-blue-600 group-hover:text-blue-700 font-semibold text-sm">
-                          Read more
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        </span>
-                      </div>
-                    </Link>
-                  </article>
-                )
-              })}
-            </div>
+            <>
+              <div className="grid gap-8 md:grid-cols-3">
+                {posts.map((post, i) => (
+                  <BlogPostCard key={post.id} post={post} featured={i === 0} />
+                ))}
+              </div>
+              <BlogLoadMore initialIds={posts.map((post) => post.id)} total={total} />
+            </>
           )}
         </section>
       </main>
