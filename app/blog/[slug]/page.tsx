@@ -81,8 +81,8 @@ export async function generateMetadata({
 
   const media = post._embedded?.["wp:featuredmedia"]?.[0]
   let image: string | undefined = media?.source_url
-  let imageWidth: number | undefined = media?.media_details?.width
-  let imageHeight: number | undefined = media?.media_details?.height
+  const imageWidth: number | undefined = media?.media_details?.width
+  const imageHeight: number | undefined = media?.media_details?.height
 
   if (!image) {
     const match = post.content?.rendered?.match(/<img[^>]+src=["']([^"']+)["']/i)
