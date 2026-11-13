@@ -40,7 +40,7 @@ export default function Navbar() {
           <Link href="/#resources" className="text-gray-700 hover:text-blue-600 transition">
             Resources
           </Link>
-          <Link href="/gallery" className="text-gray-700 hover:text-blue-600 transition">
+          <Link href="/#photo-gallery" className="text-gray-700 hover:text-blue-600 transition">
             Photo Gallery
           </Link>
           <Link
