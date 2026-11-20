@@ -106,7 +106,7 @@ export default function Footer() {
               &copy; {currentYear} Medical School Christian Union. All rights reserved.
             </p>
             <p className="text-gray-100 text-sm italic">
-              "Whatever you do, work at it with all your heart, as working for the Lord." — Colossians 3:23
+              &quot;Whatever you do, work at it with all your heart, as working for the Lord.&quot; — Colossians 3:23
             </p>
           </div>
         </div>
